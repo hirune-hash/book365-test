@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head><meta name="robots" content="noindex">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>page98</title>
+    </head>
+  <!-- <style>
+        #search-results2{
+            max-width:320px;
+            margin:0 auto;
+        }
+table {   
+            text-align: center;
+            border-collapse: collapse;
+            margin: auto;  
+            }
+        td{
+            border: 1px solid #ddd;
+            padding: 6px;
+            max-width: 33.33vw;       
+            }
+        .linkbox{
+            text-align: center;
+            
+        }
+    .linkbtn {
+        display: block;
+        text-align: center;
+        padding: 10px;
+        margin: 10px auto;
+        width: 300px; /* ボタンの幅を調整 */
+        
+        color: #fff;
+        border-radius: 5px;
+        
+        }
+        .linkbtn a{
+            color: #fff; 
+             
+        }
+        .amazonlink{
+            background-color: #F19F00;
+            text-decoration: none;}
+        .rakutenlink{
+            background-color: #CF3800;
+            text-decoration: none;}
+        .hontolink{
+            background-color: #0085CD;
+            text-decoration: none;}
+        .bookofflink{
+            background-color: #235180;
+            text-decoration: none;}
+        .merukarilink{
+            background-color: #E6000E;
+            text-decoration: none;}
+        .calillink{
+            background-color: #00ABB6;
+            text-decoration: none;}
+        
+
+
+            
+
+            div#loading {
+    width: 35px;
+    height: 35px;
+    display: none;
+    background-color: #45a049;
+    cursor: wait;
+    }
+</style> -->
+<!-- 新レイアウトstyle -->
+<style>
+    /* 全体スタイル */
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+    }
+    header {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: white;
+        text-align: center;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+        margin: 0;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .content {
+        max-width: 600px;
+        margin: 20px auto;
+        background: #ffffff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .linkbox{
+        text-align: center;        
+    }
+    .book-details {
+        text-align: left;
+    }
+    .book-details img {
+        max-width: 80%;
+        border-radius: 8px;
+    }
+    .book-title a{
+        font-size: 20px;
+        margin-top: 15px;
+        font-weight: bold;
+        color: #000000;
+        text-decoration: none;
+    }
+    .book-details-container{
+        display: flex;
+        justify-content: center;
+        font-size: 80%;
+    }
+
+    /* 各セクションのスタイル */
+    .section {
+        padding: 20px;
+    }
+    .used-books {
+        background: #f8faff;
+    }
+    .new-books {
+        background: #f6fff8;
+    }
+    .library-status {
+        background: #fff8e1;
+    }
+    .section-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+        font-weight: bold;
+        color: #444;
+    }
+    .book-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .book-item .info {
+        flex: 1;
+        margin-right: 10px;
+    }
+    .book-item .info .shop-name,
+    .book-item .info .library-name {
+        /* font-weight: bold; */
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    .book-item .info .price {
+        color: #007BFF;
+        font-size: 16px;
+    }
+    .book-item .status {
+        display: flex;
+        align-items: center;
+        font-weight: bold;
+        padding: 6px;
+    }
+    .status.in-stock,
+    .status.available {
+        color: green;
+    }
+    .status.out-of-stock,
+    .status.borrowed {
+        color: red;
+    }
+    .book-item a {
+        text-decoration: none;
+        color: white;
+        background-color: #5582b2;
+        padding: 9px 12px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+    .reserve-link {
+            text-align: center;
+            margin-top: 20px;
+    }
+    .reserve-link a {
+        text-decoration: none;
+        color: white;
+        background-color: #5582b2;
+        padding: 15px 20px;
+        border-radius: 8px;
+        font-size: 16px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+
+
+
+    .linkbtn {
+        text-align: center;
+        margin-top: 20px;
+        
+        color: #fff;
+        border-radius: 5px;
+        
+    }
+    .linkbtn a{
+        text-decoration: none;
+        color: white;
+        background-color: #00ABB6;
+        padding: 10px 80px;
+        border-radius: 8px;
+        font-size: 16px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+    }
+        
+   
+    .sysIDlink{
+        text-align: center;    
+    }
+    .formbox0{
+        text-align: center;    
+    }
+  
+    .formbox1, .formbox2 {
+    padding: 3px;
+    display: inline-block;
+    }
+
+    /* .floatclear{clear: both;} */
+    .footer-contents{
+        text-align: center;    
+    }
+    .shelf-1 {
+            width: 70%;
+            height: 20px;
+            background: linear-gradient(to bottom, #e6e3df, #e0ddda);
+            border-radius: 5px;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+            clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+        }
+        .shelf-2 {
+            width: 70%;
+            height: 15px;
+            background-color:#e9e5e0;
+            /* background: linear-gradient(to bottom, #351b02, #80430a); */
+            /* border-radius: 5px; */
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+            /* clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%); */
+        }
+        .shelf-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: -10px; /* 棚板の奥行きとの間隔 */
+            align-items: center;
+        }
+
+        .shelf-container img {
+            display: block;
+            width: 150px;
+            border-radius: 4px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+            position: relative;  /* 重なり順序を制御 */
+            z-index: 2; 
+        }
+        .shelf-body
+        {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+            
+        }
+          
+        
+
+
+
+
+</style>
+
+
+<body>
+    <div id="loading">検索中です</div>
+<h2>検索結果</h2>
+       <span style="font-size: 80%;">※このサイトは広告リンクを使用しています</span>
+         
+     <!-- body以下 -->
+     <div id="search-results2" >
+        <!-- 検索結果はサーバーサイドで表示 -->
+        
+        {% if results2 %}
+        <div class="content">
+        <div class="linkbox">
+            <div class="shelf-body">
+            <div class="shelf-container">
+            <a href=" {{ results2['Items'][0]['Item']['affiliateUrl'] }}">
+                <img src="{{ results2['Items'][0]['Item']['largeImageUrl'] }}" style="max-width: 200px;" >
+                </a></div>
+                <!-- 棚 -->
+                <div class="shelf-1"></div>
+                <div class="shelf-2"></div>
+            
+        </div>
+                <!-- タイトル -->
+                <div class="book-title">
+                <a href=" {{ results2['Items'][0]['Item']['affiliateUrl'] }}">
+                    {{ results2['Items'][0]['Item']['title'] }} 
+                </a>
+                </div>
+                <div class="book-details-container">
+                <div class="book-details">
+                <!-- <span style="font-size: 80%;"> -->
+                価格：{{ results2['Items'][0]['Item']['itemPrice']}}
+                <br>著者：{{ results2['Items'][0]['Item']['author']}}
+                <br>出版：{{ results2['Items'][0]['Item']['publisherName']}}              
+                <br>ISBNコード：{{ results2['Items'][0]['Item']['isbn']}}
+                <!-- </span> -->
+                </div>
+                </div>
+            
+        </div>
+        <div class="box">
+
+
+        <!-- 新レイアウト古本リンクセクション -->
+        
+        <div class="section used-books">
+            <h3 class="section-title">古本リンク</h3>
+            <div class="book-item">
+                <div class="info">
+                    <div class="shop-name">bookoff</div>
+                    <!-- <div class="price">¥500</div> -->
+                </div>
+                <div class="status in-stock">{% if bookoff %}
+                    {{bookoff}}{% else %}
+                    商品なし
+                    {% endif %}
+                </div>
+                <!-- <a href="https://example-usedbook1.com" target="_blank">購入</a> -->
+                <script>              
+                    var dynamicKeyword = "{{ results2['Items'][0]['Item']['title']}}";              
+                    var dynamicLink = "https://shopping.bookoff.co.jp/search/keyword/" + encodeURIComponent(dynamicKeyword);                         
+                    document.write('<a href="' + dynamicLink + '"target="_blank" >' + '購入' + '</a>');
+                </script>
+            </div>
+
+            <div class="book-item">
+                <div class="info">
+                    <div class="shop-name">netoff</div>
+                    <!-- <div class="price">¥500</div> -->
+                </div>
+                <div class="status in-stock">{% if netoff %}
+                    {{netoff }}{% else %}商品なし{% endif %}</div>
+                
+                <script>              
+                    var netoffKeyword = "{{ results2['Items'][0]['Item']['title']}}";              
+                    var netoffLink = "https://www.netoff.co.jp/cmdtyallsearch?word=" + encodeURIComponent(netoffKeyword);                         
+                    document.write('<a href="' + netoffLink + '"target="_blank" >' + '購入' + '</a>');
+                </script>
+            </div>
+
+
+
+            <!-- メルカリ -->
+            <div class="book-item">
+                <div class="info">
+                    <div class="shop-name">メルカリ</div>
+                    <!-- <div class="price">¥500</div> -->
+                </div>
+                
+                
+                <script>
+                    var merukariKeyword = "{{ results2['Items'][0]['Item']['title']}}";
+                    var merukariURL = "https://jp.mercari.com/search?keyword=" + encodeURIComponent(merukariKeyword)+"&status=on_sale&category_id=5&afid=4700086878";              
+                    document.write('<a href="' + merukariURL + '" class="merukarilink">' + '探す' + '</a>');
+                </script>
+            </div>
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+        <!-- ◯rakuten市場セクション -->
+        <div class="section used-books">
+            <h3 class="section-title">楽天市場</h3>
+            {% if rakuten_r %}
+                {% for item in rakuten_r['Items'] %}
+            <div class="book-item">
+                <div class="info">
+                    <div class="shop-name">{{ item['Item']['shopName'] }} </div>
+                    <!-- <div class="price">{{ item['Item']['itemPrice'] }}円</div> -->
+                </div>
+                <div class="status in-stock">{{ item['Item']['itemPrice'] }}円</div>
+                <a href="{{ item['Item']['affiliateUrl'] }}" target="_blank">購入</a>
+            </div>
+            {% endfor %}{% else %}<p>取得できませんでした</p>{% endif %}
+        </div>
+        
+        <!-- ◯図書館セクション -->
+
+        <div class="section used-books">
+            <h3 class="section-title">図書館で借りる</h3>
+            <!-- カーリルリンクボタン -->
+            <div class="linkbtn">
+            <script>
+                var calilKeyword = "{{ results2['Items'][0]['Item']['title']}}";
+                var calil_URL = "https://calil.jp/search?q=" + encodeURIComponent(calilKeyword);              
+                document.write('<a href="' + calil_URL + '" class="calillink">' + 'カーリルで探す' + '</a>');
+            </script>
+            </div>
+            <!-- 詳細のリンク -->
+            <div class="sysIDlink">
+            <span style="font-size: 70%;"><a href="{{url_for('prefecture')}}">
+              システムIDについて
+            </a></span>
+            </div>
+             <!-- 図書館システムID入力フォーム-->
+            <div class="formbox0">
+            <div class="formbox1">
+            <form  id="myForm" action="/libget" method="post" enctype="multipart/form-data">
+                
+                <input type="text" placeholder="図書館システムID" id="systemid" name="systemid" value="{{systemid}}"/>
+                
+                <button type="submit" id="submitButton" >保存</button>
+                
+            </form>
+            </div>
+            <div class="formbox2">
+            <button onclick="location.reload();">検索</button></div>
+            <div class="floatclear"></div>
+            
+            </div>
+            <!-- ここまで図書館システムID入力フォーム-->         
+
+            {% if lib_results is mapping %}
+                
+                {% for key, value in lib_results.items() %}
+                <div class="book-item">
+                    <div class="info">
+                        <div class="shop-name">{{ key }}</div>                       
+                    </div>
+                    <div class="status in-stock">{{ value }}</div>                  
+                </div>
+                {% endfor %}
+               
+                {% else %}
+                    {% if lib_results %}
+        
+                    {% else %}取得できません
+                    {% endif %}
+            {% endif %}
+           
+            {% if reserveurl %}
+            <div class="reserve-link">
+            <a href=" {{reserveurl}}" >図書館予約ページへ</a></div>                 
+            {% else %}{% endif %}
+        </div>
+        </div>
+        <!-- ◯新品セクション -->
+        <div class="section used-books">
+            <h3 class="section-title">新品リンク</h3>
+            <!-- アマゾンリンク -->
+            <div class="book-item">
+                <div class="info">
+                    <div class="shop-name">amazon</div>                    
+                </div>
+                <div class="status in-stock">定価</div>
+                <script>              
+                    var amazonKeyword = "{{ results2['Items'][0]['Item']['title']}}";              
+                    var amazonLink = "https://www.amazon.co.jp/gp/search?ie=UTF8&tag=page98-22&linkCode=ur2&linkId=11cc520666ec268afb23d8ea22cd0186&camp=247&creative=1211&index=books&keywords=" + encodeURIComponent(amazonKeyword);                         
+                    document.write('<a href="' + amazonLink + '" class="">' + '購入' + '</a>');
+                </script>
+            </div>
+            <!-- 楽天ブックスリンク -->
+            <div class="book-item">
+                <div class="info">
+                    <div class="shop-name">楽天ブックス</div>                   
+                </div>
+                <div class="status in-stock">定価</div>
+                <a href="{{ results2['Items'][0]['Item']['affiliateUrl']}}" class="">購入</a>   
+            </div>  
+        </div>
+
+        </div>
+  
+        <div class="footer-contents">
+        <p>他の書店でさがす</p>
+        <button class="bonbon" onclick="copyToClipboard1()">ISBNをコピーする</button>
+        <button class="bonbon" onclick="copyToClipboard2()">タイトルをコピーする</button>
+        <script>
+            function copyToClipboard1() {
+                // テキストを取得
+                var isbnText = "{{ results2['Items'][0]['Item']['isbn']}}";
+                var textarea = document.createElement("textarea");
+                textarea.value = isbnText;
+                // ボディに追加
+                document.body.appendChild(textarea);
+                // テキストエリアを選択してコピー
+                textarea.select();
+                document.execCommand("copy");
+                // テキストエリアを削除
+                document.body.removeChild(textarea);
+                // コピーが完了したらアラートを表示
+                alert("ISBNをコピーしました");
+            }
+            function copyToClipboard2() {
+                var titleText =  "{{ results2['Items'][0]['Item']['title'] }}";
+                var textarea = document.createElement("textarea");
+                textarea.value = titleText;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textarea);
+                alert("タイトルをコピーしました");
+            }
+        </script>
+        <p>
+            <a class="headlink" href="{{url_for('index')}}"> 他の本を検索する </a>
+        </p>            
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+      
+      
+
+
+
+
+
+
+
+
+        <!-- ここまで新レイアウト -->
+
+
+        <p>古本</p>
+        <!-- bookoffのリンク -->   
+            <script>              
+                var dynamicKeyword = "{{ results2['Items'][0]['Item']['title']}}";              
+                var dynamicLink = "https://shopping.bookoff.co.jp/search/keyword/" + encodeURIComponent(dynamicKeyword);                         
+                document.write('<a href="' + dynamicLink + '" class="linkbtn bookofflink">' + 'ブックオフで探す' + '</a>');
+            </script>
+<table><tr><td><span>{% if bookoff %}
+            {{bookoff}}{% else %}
+            取得できません
+            {% endif %}</span></td>
+<td><span style="font-weight: bold;"><script>              
+                var dynamicKeyword = "{{ results2['Items'][0]['Item']['title']}}";              
+                var dynamicLink = "https://shopping.bookoff.co.jp/search/keyword/" + encodeURIComponent(dynamicKeyword);                         
+                document.write('<a href="' + dynamicLink + '"target="_blank" >' + 'bookoff onlineへ' + '</a>');
+            </script></span></td>
+            </tr></table>
+
+
+            <span style="font-size: 70%;">送料368円(1800円以上無料)</span>
+
+<table><tr><td><span>{% if netoff %}
+            {{netoff }}{% else %}
+            取得できません
+            {% endif %}</span></td>
+<td><span style="font-weight: bold;"><script>              
+                var netoffKeyword = "{{ results2['Items'][0]['Item']['title']}}";              
+                var netoffLink = "https://www.netoff.co.jp/cmdtyallsearch?word=" + encodeURIComponent(netoffKeyword);                         
+                document.write('<a href="' + netoffLink + '"target="_blank" >' + 'netoffへ' + '</a>');
+            </script></span></td>
+            </tr></table>
+
+
+            <span style="font-size: 70%;">送料150-440円(1500円以上無料)</span>
+
+
+
+
+<p class ="section">・楽天‐価格順</p>
+            <table>
+                {% if rakuten_r %}
+                {% for item in rakuten_r['Items'] %}
+                <tr>
+                    <td>
+                        {{ item['Item']['itemPrice'] }}円
+                    </td>
+                    <td>
+                        {% if  item['Item']['postageFlag'] == 1 %}
+                        送料別
+                        {% elif  item['Item']['postageFlag'] == 0 %}
+                        送料込
+                    </td>
+                    {% endif %}
+                
+                    <td>
+                    <a href=" {{ item['Item']['affiliateUrl'] }}">
+                        {{ item['Item']['shopName'] }} </a><br>
+                    </td>   
+                       
+                            
+                     
+                    {% endfor %}
+                </tr>{% else %}<tr>エラー</tr>{% endif %}
+                </table>
+        <!-- メルカリのリンク -->    
+            <script>
+                var merukariKeyword = "{{ results2['Items'][0]['Item']['title']}}";
+                var merukariURL = "https://jp.mercari.com/search?keyword=" + encodeURIComponent(merukariKeyword)+"&status=on_sale&category_id=5&afid=4700086878";              
+                document.write('<a href="' + merukariURL + '" class="linkbtn merukarilink">' + 'merukariで探す' + '</a>');
+            </script>
+        <span>図書館</span>    
+        <!-- カーリルのリンク -->      
+            <script>
+                var calilKeyword = "{{ results2['Items'][0]['Item']['title']}}";
+                var calil_URL = "https://calil.jp/search?q=" + encodeURIComponent(calilKeyword);              
+                document.write('<a href="' + calil_URL + '" class="linkbtn calillink">' + 'カーリルで探す' + '</a>');
+            </script>
+
+
+            <div class="formbox1">
+            <form  id="myForm" action="/libget" method="post" enctype="multipart/form-data">
+                
+                <input type="text" placeholder="図書館システムID" id="systemid" name="systemid" value="{{systemid}}"/>
+                
+                <button type="submit" id="submitButton" >保存</button>
+                
+            </form>
+        </div><div class="formbox2">
+            <button onclick="location.reload();">検索</button></div>
+            <div class="floatclear"></div>
+            
+            <!-- <button onclick="();"">再読み込み</button> -->
+            <!-- <button id="customButton" style="display: none;" >読み込み時検索</button> -->
+            <table border="1" style="border-collapse: collapse">
+                
+                {% if lib_results is mapping %}
+                
+                {% for key, value in lib_results.items() %}
+                <tr>
+                    <td>{{ key }}</td>
+                    <td>{{ value }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                {% if lib_results %}
+                    
+                {% else %}
+                    <tr id="myRow">
+                        <td id="tdCell">取得できません</td>
+                    </tr>
+                {% endif %}
+            {% endif %}
+            
+
+
+            {% if lib_results %}
+{% else %}
+    <tr>
+        <td colspan="2">データなし</td>
+    </tr>
+{% endif %}
+            </table>
+            
+            {% if reserveurl %}
+            <a href=" {{reserveurl}}" >予約はこちら</a>                  
+            {% else %}{% endif %}
+
+            <!-- 詳細のリンク -->  
+            <br><span style="font-size: 70%;"><a href="{{url_for('prefecture')}}">
+              システムIDについて
+            </a></span>
+
+            <p>新品</p>
+            <!-- amazonのリンク -->            
+            <script>              
+                var amazonKeyword = "{{ results2['Items'][0]['Item']['title']}}";              
+                var amazonLink = "https://www.amazon.co.jp/gp/search?ie=UTF8&tag=page98-22&linkCode=ur2&linkId=11cc520666ec268afb23d8ea22cd0186&camp=247&creative=1211&index=books&keywords=" + encodeURIComponent(amazonKeyword);                         
+                document.write('<a href="' + amazonLink + '" class="linkbtn amazonlink">' + 'amazonで探す' + '</a>');
+            </script>
+                
+          
+          
+        
+             <a href="{{ results2['Items'][0]['Item']['affiliateUrl']}}" class="linkbtn rakutenlink">
+                 楽天ブックスで探す 
+                      </a>
+            <!-- hontoのリンク -->   
+            <script>
+                var hontoKeyword = "{{ results2['Items'][0]['Item']['title']}}";
+                var hontoLink = "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3597008&pid=890091120&vc_url=https%3A%2F%2Fhonto.jp%2Fnetstore%2Fsearch_10"+ encodeURIComponent(hontoKeyword)+".html%3Fpartnerid%3D02vc01";                
+                document.write('<a href="' + hontoLink + '" class="linkbtn hontolink">' + 'hontoで探す' + '</a>');
+            </script>
+
+
+
+        </div>
+        <p>他の書店でさがす</p>
+        <button class="bonbon" onclick="copyToClipboard1()">ISBNをコピーする</button>
+        <button class="bonbon" onclick="copyToClipboard2()">タイトルをコピーする</button>
+        <script>
+            function copyToClipboard1() {
+                // テキストを取得
+                var isbnText = "{{ results2['Items'][0]['Item']['isbn']}}";
+                var textarea = document.createElement("textarea");
+                textarea.value = isbnText;
+                // ボディに追加
+                document.body.appendChild(textarea);
+                // テキストエリアを選択してコピー
+                textarea.select();
+                document.execCommand("copy");
+                // テキストエリアを削除
+                document.body.removeChild(textarea);
+                // コピーが完了したらアラートを表示
+                alert("ISBNをコピーしました");
+
+            }
+            function copyToClipboard2() {
+                var titleText =  "{{ results2['Items'][0]['Item']['title'] }}";
+                var textarea = document.createElement("textarea");
+                textarea.value = titleText;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textarea);
+                alert("タイトルをコピーしました");
+            }
+        </script>
+   
+
+
+            
+            
+            {% else %}
+            取得できません
+        {% endif %}
+        <p></p>
+
+        <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3597008&pid=890169927" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3597008&pid=890169927" >紀伊國屋書店</a>
+
+
+        <br><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3597008&pid=890169925" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3597008&pid=890169925">ブックライブ</a>
+       
+    <br> <a href="https://7net.omni7.jp/top">セブンネットショッピング</a>
+
+<br><br>
+<a class="headlink" href="{{url_for('index')}}"> 他の本を検索する </a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+</html>		

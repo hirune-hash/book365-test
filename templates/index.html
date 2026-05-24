@@ -1,0 +1,185 @@
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="2vR3gMfbZTsaI7g0HSb2S-LWsB_wXb6oBHIOAANjDgc" />
+  <meta name="description" content="オンライン書店と古本、図書館の情報をまとめて書籍検索できることができます。お探しの本をどこで入手するか検討するのに便利です。オンライン書店の新品、古本、図書館（カーリル）を一括検索することができます。amazon、楽天ブックス、honto、ブックオフ、ネットオフ、楽天市場、全国の図書館に対応。">
+  <meta name="keyword" content="本,書籍,古本,中古本,図書館,書籍検索,書籍横断検索,書籍クロス検索">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta name="twitter:title" content="page98 - 本の検索サイト">
+  <meta name="twitter:description" content="オンライン書店と古本、図書館の情報をまとめて検索できることができます。お探しの本をどこで入手するか検討するのに便利です。" >
+  <meta property="og:image" content="https://page98.shop/static/122613.png" />
+  <meta content="https://page98.shop/static/122613.png" property="og:image">
+
+  <meta content="https://page98.shop/static/122613.png" name="twitter:image">
+
+  <meta property="og:url" content="https://page98.shop/" />
+
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="apple-touch-icon" type="image/png" href="{{ url_for('static', filename='apple-touch-icon.png') }}" sizes="180x180">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='android-touch-icon.png') }}" sizes="192x192">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='196.png') }}" sizes="196x196">
+
+  <link rel="apple-touch-icon-precomposed" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='16.png') }}" sizes="16x16">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='32.png') }}" sizes="32x32">
+  <meta name="msapplication-TileImage" content="{{ url_for('static', filename='apple-touch-icon.png') }}">
+
+  <link rel="mask-icon" href=""{{ url_for('static', filename='196.svg') }}" >
+ -->
+
+<!-- Googleフォントニコモジ -->
+  <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+<!-- GoogleフォントDela Gothic One -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+  <title>page98 | 書籍検索サイト‐本の検索システムサイト</title>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-40WFNJ6L42"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-40WFNJ6L42');
+</script>
+
+<!-- 
+<script type="application/ld+json">
+    {
+      "name" : "書籍検索サイト page98",
+      "url" : "https://page98.shop/"
+    }
+  </script> -->
+
+<style>
+
+.title{
+      display: inline-block;
+    }
+    .header1{background-color: #ff7300;padding: 20px;
+ font-family: "Nico Moji";}
+    .header2{
+      background-color: rgb(205, 206, 211);
+      padding: 10px;
+      }
+    .header2 a{
+      color: #ff7300;
+      text-decoration: none;
+    }
+    .messe{
+      padding: 20px 0px;
+    }
+    .searchbox{
+      padding: 20px 0px;
+    }
+    #search-input{
+      padding: 11px;
+      border: 1px solid rgb(45, 45, 45);
+      width:250px;
+    }
+    .searchbtn{
+      padding: 8px 30px;
+    }
+    
+.headlinkt{
+      padding: 5px;
+     
+    }
+.share_messe{font-family: "Dela Gothic One";}
+.content{
+  max-width:360px;
+  margin:0 auto;
+
+  }
+</style>
+<body>
+<header>
+<img src="https://page98.shop/static/122613.png" style="display:none;">
+<div class="header1"style="text-align: center;">
+<span href=""class="page"style="font-size: 160%;color: #fff;">PAGE98</span>
+ </div>
+<div class="header2"style="text-align: center;">
+<span style="font-size: 70%;">
+  <a class="headlink" href="{{url_for('policy')}}"> 免責事項 </a>
+  <a class="headlink" href="https://docs.google.com/forms/d/e/1FAIpQLSc_tAL3W7X5nAu78rmp4b0yKef6ipG6o62n01-gJ9IUJ6I9GQ/viewform?usp=sf_link"> お問い合わせ </a>
+  
+</span>
+</div></header>
+<div class="messe" style="text-align: center;">
+  <h1 style="font-size: 100%;">amazon、楽天ブックス、honto、ブックオフ、ネットオフ、楽天市場、指定する図書館を一括検索することができます。</h1>
+</div>
+
+
+
+{% if envtest %}
+{{envtest}}
+{% endif %}
+
+
+
+
+
+
+
+
+
+<div class="searchbox" style="text-align: center;">
+  <form action="/search" method="GET">
+      <!-- <label for="search-input">検索:</label> -->
+      <input type="text" id="search-input" name="query" />
+      <button class="searchbtn" type="submit">検索</button>
+  </form>
+</div> 
+<div class="content">
+<br>
+<h2 style="font-size: 120%;">こんな人におすすめ</h2>
+<p>
+  本好きの方<br>お得に本をインターネットで入手したい方
+  <br>なるべく図書館を利用して本を読んでいる方
+</p>
+<h2 style="font-size: 120%;">こんなことができます</h2>
+<p>
+  お探しの本が、自分の家の近くの図書館にあるかどうか、オンラインの古本屋にあるかどうかをチェック。
+  <br>
+  なければ新品のオンライン書店にそのままアクセスできます。
+</p>
+<p>
+  <span class="share_messe"style="font-size: 120%;color: #3696CB;">
+    気に入ってくれたらホーム画面や<br>ブックマークに追加して使ってね！！
+
+  </span>
+  
+</p>
+<p>
+<a href="https://www.google.com/search?q=%E3%83%9B%E3%83%BC%E3%83%A0%E7%94%BB%E9%9D%A2%E3%81%AB%E8%BF%BD%E5%8A%A0" target="blank">
+    ホーム画面に追加
+  </a><br>
+
+  <a href="https://www.google.com/search?q=%E3%83%96%E3%83%83%E3%82%AF%E3%83%9E%E3%83%BC%E3%82%AF" target="blank">
+    ブックマークに追加
+  </a>
+</p>
+<br>
+
+<p>
+<a href="https://b.hatena.ne.jp/entry/s/page98.shop/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label-counter" data-hatena-bookmark-lang="ja" data-hatena-bookmark-height="25" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="PAGE98 はamazon、楽天ブックス、honto、ブックオフ、メルカリ、図書館を一括検索することができる便利なサイトです" data-hashtags="読書" data-show-count="false">Tweet</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<div class="line-it-button" data-lang="ja" data-type="share-a" data-env="REAL" data-url="https://page98.shop/" data-color="default" data-size="large" data-count="true" data-ver="3" style="display: none;"></div>
+<script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+</p>
+
+</div>   
+
+
+
+
+</body>
+
+</html>	
