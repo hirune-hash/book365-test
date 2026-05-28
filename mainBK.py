@@ -112,9 +112,12 @@ def search2():
     query2 = request.args.get('query2', '')
 
     with ThreadPoolExecutor() as executor:
+        # 並列処理で関数を実行し、結果を取得する
         results2_future = executor.submit(perform_search2, query2)
+        bookoff_future = executor.submit(bookoff_search, query2)
+        netoff_future = executor.submit(netoff_search, query2)
         rakuten_r_future = executor.submit(rak_pricelow, query2)
-
+        
         try:
             systemid = session['systemid']
             lib_results_future = executor.submit(bookstatus, systemid, query2)
@@ -123,11 +126,14 @@ def search2():
             systemid = ""
             lib_results = ""
             reserveurl = ""
-
+        
+        # すべての処理が完了するまで待機
         results2 = results2_future.result()
+        bookoff = bookoff_future.result()
+        netoff = netoff_future.result()
         rakuten_r = rakuten_r_future.result()
 
-    return render_template('search2.html', results2=results2, lib_results=lib_results, rakuten_r=rakuten_r, systemid=systemid, reserveurl=reserveurl)
+    return render_template('search2.html', results2=results2, bookoff=bookoff, netoff=netoff, lib_results=lib_results, rakuten_r=rakuten_r, systemid=systemid, reserveurl=reserveurl)
 
 def perform_search2(query2):
     keyword2 = query2

@@ -119,12 +119,25 @@
         color: red;
     }
     .book-item a {
-        text-decoration: none;
-        color: white;
-        background-color: #5582b2;
+        
+        /* color: white; */
+        /* background-color: #5582b2; */
         padding: 9px 22px;
-        border-radius: 5px;
+        
         font-size: 14px;
+        
+        
+        border-radius: 20px;
+        background: #e1ebf5;
+        color: #0f116e;
+        border: 0.5px solid #5d89ca;
+        cursor: pointer;
+        white-space: nowrap;
+        text-decoration: none;
+
+
+
+
     }
     .reserve-link {
             text-align: center;
@@ -201,6 +214,7 @@
             display: inline-block;
             margin-bottom: -10px; /* 棚板の奥行きとの間隔 */
             align-items: center;
+            padding: 15px 0px 0px 0px;
         }
 
         .shelf-container img {
@@ -275,18 +289,12 @@
         <!-- 新レイアウト古本リンクセクション -->
         
         <div class="section used-books">
-            <h3 class="section-title">古本リンク</h3>
+            <h3 class="section-title">♻️古本</h3>
             <div class="book-item">
                 <div class="info">
                     <div class="shop-name">bookoff</div>
-                    <!-- <div class="price">¥500</div> -->
                 </div>
-                <div class="status in-stock">{% if bookoff %}
-                    {{bookoff}}{% else %}
-                    商品なし
-                    {% endif %}
-                </div>
-                <!-- <a href="https://example-usedbook1.com" target="_blank">探す</a> -->
+
                 <script>              
                     var dynamicKeyword = "{{ results2['Items'][0]['Item']['title']}}";              
                     var dynamicLink = "https://shopping.bookoff.co.jp/search/keyword/" + encodeURIComponent(dynamicKeyword);                         
@@ -297,10 +305,7 @@
             <div class="book-item">
                 <div class="info">
                     <div class="shop-name">netoff</div>
-                    <!-- <div class="price">¥500</div> -->
                 </div>
-                <div class="status in-stock">{% if netoff %}
-                    {{netoff }}{% else %}商品なし{% endif %}</div>
                 
                 <script>              
                     var netoffKeyword = "{{ results2['Items'][0]['Item']['title']}}";              
@@ -315,10 +320,7 @@
             <div class="book-item">
                 <div class="info">
                     <div class="shop-name">メルカリ</div>
-                    <!-- <div class="price">¥500</div> -->
-                </div>
-                
-                
+                </div>             
                 <script>
                     var merukariKeyword = "{{ results2['Items'][0]['Item']['title']}}";
                     var merukariURL = "https://jp.mercari.com/search?keyword=" + encodeURIComponent(merukariKeyword)+"&status=on_sale&category_id=5&afid=4700086878";              
@@ -330,7 +332,7 @@
         </div>
         <!-- ◯rakuten市場セクション -->
         <div class="section used-books">
-            <h3 class="section-title">楽天市場</h3>
+            <h3 class="section-title">🛒楽天市場</h3>
             {% if rakuten_r %}
                 {% for item in rakuten_r['Items'] %}
             <div class="book-item">
@@ -347,7 +349,7 @@
         <!-- ◯図書館セクション -->
 
         <div class="section used-books">
-            <h3 class="section-title">図書館で借りる</h3>
+            <h3 class="section-title">📖図書館</h3>
             <!-- カーリルリンクボタン -->
             <div class="linkbtn">
             <script>
@@ -378,6 +380,7 @@
             <div class="floatclear"></div>
             
             </div>
+            <div>システムIDをペーストしたら「保存」➜「検索」をクリック</div>
             <!-- ここまで図書館システムID入力フォーム-->         
 
             {% if lib_results is mapping %}
@@ -406,7 +409,7 @@
         </div>
         <!-- ◯新品セクション -->
         <div class="section used-books">
-            <h3 class="section-title">新品リンク</h3>
+            <h3 class="section-title">🛒オンライン書店</h3>
             <!-- アマゾンリンク -->
             <div class="book-item">
                 <div class="info">
