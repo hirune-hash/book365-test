@@ -264,7 +264,7 @@
                 <div class="shelf-1"></div>
                 <div class="shelf-2"></div>
             
-        </div>
+            </div>
                 <!-- タイトル -->
                 <div class="book-title">
                 <a href=" {{ results2['Items'][0]['Item']['affiliateUrl'] }}">
@@ -283,6 +283,102 @@
                 </div>
             
         </div>
+        <!-- ここから横置きのテスト -->
+
+raw
+Book hero · HTML
+<div class="book-hero">
+    <div class="shelf-body">
+        <div class="shelf-container">
+            <a href="{{ results2['Items'][0]['Item']['affiliateUrl'] }}">
+                <img src="{{ results2['Items'][0]['Item']['largeImageUrl'] }}" alt="{{ results2['Items'][0]['Item']['title'] }}">
+            </a>
+        </div>
+
+    </div>
+ 
+    <div class="book-meta">
+        <div class="book-title">
+            <a href="{{ results2['Items'][0]['Item']['affiliateUrl'] }}">
+                {{ results2['Items'][0]['Item']['title'] }}
+            </a>
+        </div>
+        <div class="book-badges">
+            <span class="badge">{{ results2['Items'][0]['Item']['author'] }}</span>
+            <span class="badge">{{ results2['Items'][0]['Item']['publisherName'] }}</span>
+            <span class="badge">ISBN {{ results2['Items'][0]['Item']['isbn'] }}</span>
+        </div>
+        <div class="price-tag">¥{{ results2['Items'][0]['Item']['itemPrice'] }}（定価）</div>
+    </div>
+</div>
+ 
+ 
+<!-- ↓対応CSS（既存のlinkbox/book-title等と置き換えてください） -->
+<style>
+.book-hero {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px;
+}
+.book-meta {
+    flex: 1;
+    min-width: 0;
+}
+.book-title a {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #000;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+}
+.book-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+.badge {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    background: #f0f0f0;
+    color: #666;
+    border: 0.5px solid #ddd;
+}
+.price-tag {
+    font-size: 13px;
+    font-weight: 500;
+    color: #0F6E56;
+}
+</style>
+ 
+            <!-- ここまで -->
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <div class="box">
 
 
@@ -305,6 +401,7 @@
             <div class="book-item">
                 <div class="info">
                     <div class="shop-name">netoff</div>
+   
                 </div>
                 
                 <script>              
