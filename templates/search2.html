@@ -1,34 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head><meta name="robots" content="noindex">
+    <head>
+        <meta name="robots" content="noindex">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <title>page98</title>
+        <title>book365</title>
     </head>
 
-<!-- 新レイアウトstyle -->
 <style>
-    /* 全体スタイル */
     body {
         font-family: 'Arial', sans-serif;
         margin: 0;
         padding: 0;
         background-color: #f4f4f9;
     }
-    header {
-        background: linear-gradient(135deg, #6a11cb, #2575fc);
-        color: white;
-        text-align: center;
-        padding: 20px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    header h1 {
-        margin: 0;
-        font-size: 24px;
-        font-weight: bold;
-    }
-
     .content {
         max-width: 600px;
         margin: 20px auto;
@@ -37,41 +22,63 @@
         overflow: hidden;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    .linkbox{
-        text-align: center;        
-    }
-    .book-details {
-        text-align: left;
-    }
-    .book-details img {
-        max-width: 80%;
-        border-radius: 8px;
-    }
-    .book-title a{
-        font-size: 20px;
-        margin-top: 15px;
-        font-weight: bold;
-        color: #000000;
-        text-decoration: none;
-    }
-    .book-details-container{
+
+    /* 書籍ヒーローエリア */
+    .book-hero {
         display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        padding: 20px;
         justify-content: center;
-        font-size: 80%;
+    }
+    .book-cover-wrap {
+        flex-shrink: 0;
+    }
+    .book-cover-wrap img {
+        width: 100px;
+        border-radius: 4px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+        display: block;
+    }
+    .book-meta {
+        flex: 1;
+        min-width: 0;
+    }
+    .book-title a {
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 1.4;
+        color: #000;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 10px;
+    }
+    .book-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 10px;
+    }
+    .badge {
+        font-size: 11px;
+        padding: 3px 8px;
+        border-radius: 20px;
+        background: #f0f0f0;
+        color: #666;
+        border: 0.5px solid #ddd;
+    }
+    .price-tag {
+        font-size: 13px;
+        font-weight: 500;
+        color: #0F6E56;
     }
 
-    /* 各セクションのスタイル */
+    /* セクション共通 */
     .section {
         padding: 20px;
     }
     .used-books {
         background: #f8faff;
-    }
-    .new-books {
-        background: #f6fff8;
-    }
-    .library-status {
-        background: #fff8e1;
     }
     .section-title {
         font-size: 18px;
@@ -94,15 +101,9 @@
         flex: 1;
         margin-right: 10px;
     }
-    .book-item .info .shop-name,
-    .book-item .info .library-name {
-        /* font-weight: bold; */
+    .book-item .info .shop-name {
         font-size: 16px;
         margin-bottom: 5px;
-    }
-    .book-item .info .price {
-        color: #007BFF;
-        font-size: 16px;
     }
     .book-item .status {
         display: flex;
@@ -110,23 +111,11 @@
         font-weight: bold;
         padding: 6px;
     }
-    .status.in-stock,
-    .status.available {
-        color: green;
-    }
-    .status.out-of-stock,
-    .status.borrowed {
-        color: red;
-    }
+    .status.in-stock { color: green; }
+    .status.out-of-stock { color: red; }
     .book-item a {
-        
-        /* color: white; */
-        /* background-color: #5582b2; */
         padding: 9px 22px;
-        
         font-size: 14px;
-        
-        
         border-radius: 20px;
         background: #e1ebf5;
         color: #0f116e;
@@ -134,14 +123,12 @@
         cursor: pointer;
         white-space: nowrap;
         text-decoration: none;
-
-
-
-
     }
+
+    /* 図書館 */
     .reserve-link {
-            text-align: center;
-            margin-top: 20px;
+        text-align: center;
+        margin-top: 20px;
     }
     .reserve-link a {
         text-decoration: none;
@@ -152,19 +139,11 @@
         font-size: 16px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
-
-
-
-
     .linkbtn {
         text-align: center;
         margin-top: 20px;
-        
-        color: #fff;
-        border-radius: 5px;
-        
     }
-    .linkbtn a{
+    .linkbtn a {
         text-decoration: none;
         color: white;
         background-color: #00ABB6;
@@ -174,402 +153,191 @@
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         display: inline-block;
     }
-        
-   
-    .sysIDlink{
-        text-align: center;    
-    }
-    .formbox0{
-        text-align: center;    
-    }
-  
+    .sysIDlink { text-align: center; }
+    .formbox0 { text-align: center; }
     .formbox1, .formbox2 {
-    padding: 3px;
-    display: inline-block;
+        padding: 3px;
+        display: inline-block;
     }
 
-    /* .floatclear{clear: both;} */
-    .footer-contents{
-        text-align: center;    
-    }
-    .shelf-1 {
-            width: 70%;
-            height: 20px;
-            background: linear-gradient(to bottom, #e6e3df, #e0ddda);
-            border-radius: 5px;
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-            clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
-        }
-        .shelf-2 {
-            width: 70%;
-            height: 15px;
-            background-color:#e9e5e0;
-            /* background: linear-gradient(to bottom, #351b02, #80430a); */
-            /* border-radius: 5px; */
-            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
-            /* clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%); */
-        }
-        .shelf-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: -10px; /* 棚板の奥行きとの間隔 */
-            align-items: center;
-            padding: 15px 0px 0px 0px;
-        }
-
-        .shelf-container img {
-            display: block;
-            width: 150px;
-            border-radius: 4px;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
-            position: relative;  /* 重なり順序を制御 */
-            z-index: 2; 
-        }
-        .shelf-body
-        {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            
-            
-        }
-          
-        
-
-
-
-
+    /* フッター */
+    .footer-contents { text-align: center; }
 </style>
-
 
 <body>
     <div id="loading"></div>
-<h2>検索結果</h2>
-       <span style="font-size: 80%;">※このサイトは広告リンクを使用しています</span>
-         
-     <!-- body以下 -->
-     <div id="search-results2" >
-        <!-- 検索結果はサーバーサイドで表示 -->
-        
+    <h2>検索結果</h2>
+    <span style="font-size: 80%;">※このサイトは広告リンクを使用しています</span>
+
+    <div id="search-results2">
         {% if results2 %}
         <div class="content">
-        <div class="linkbox">
-            <div class="shelf-body">
-            <div class="shelf-container">
-            <a href=" {{ results2['Items'][0]['Item']['affiliateUrl'] }}">
-                <img src="{{ results2['Items'][0]['Item']['largeImageUrl'] }}" style="max-width: 200px;" >
-                </a></div>
-                <!-- 棚 -->
-                <div class="shelf-1"></div>
-                <div class="shelf-2"></div>
-            
-            </div>
-                <!-- タイトル -->
-                <div class="book-title">
-                <a href=" {{ results2['Items'][0]['Item']['affiliateUrl'] }}">
-                    {{ results2['Items'][0]['Item']['title'] }} 
-                </a>
+
+            <!-- 書籍情報 -->
+            <div class="book-hero">
+                <div class="book-cover-wrap">
+                    <a href="{{ results2['Items'][0]['Item']['affiliateUrl'] }}">
+                        <img src="{{ results2['Items'][0]['Item']['largeImageUrl'] }}" alt="{{ results2['Items'][0]['Item']['title'] }}">
+                    </a>
                 </div>
-                <div class="book-details-container">
-                <div class="book-details">
-                <!-- <span style="font-size: 80%;"> -->
-                価格：{{ results2['Items'][0]['Item']['itemPrice']}}
-                <br>著者：{{ results2['Items'][0]['Item']['author']}}
-                <br>出版：{{ results2['Items'][0]['Item']['publisherName']}}              
-                <br>ISBNコード：{{ results2['Items'][0]['Item']['isbn']}}
-                <!-- </span> -->
-                </div>
-                </div>
-            
-        </div>
-        <!-- ここから横置きのテスト -->
-
-raw
-Book hero · HTML
-<div class="book-hero">
-    <div class="shelf-body">
-        <div class="shelf-container">
-            <a href="{{ results2['Items'][0]['Item']['affiliateUrl'] }}">
-                <img src="{{ results2['Items'][0]['Item']['largeImageUrl'] }}" alt="{{ results2['Items'][0]['Item']['title'] }}">
-            </a>
-        </div>
-
-    </div>
- 
-    <div class="book-meta">
-        <div class="book-title">
-            <a href="{{ results2['Items'][0]['Item']['affiliateUrl'] }}">
-                {{ results2['Items'][0]['Item']['title'] }}
-            </a>
-        </div>
-        <div class="book-badges">
-            <span class="badge">{{ results2['Items'][0]['Item']['author'] }}</span>
-            <span class="badge">{{ results2['Items'][0]['Item']['publisherName'] }}</span>
-            <span class="badge">ISBN {{ results2['Items'][0]['Item']['isbn'] }}</span>
-        </div>
-        <div class="price-tag">¥{{ results2['Items'][0]['Item']['itemPrice'] }}（定価）</div>
-    </div>
-</div>
- 
- 
-<!-- ↓対応CSS（既存のlinkbox/book-title等と置き換えてください） -->
-<style>
-.book-hero {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-    padding: 20px;
-}
-.book-meta {
-    flex: 1;
-    min-width: 0;
-}
-.book-title a {
-    font-size: 15px;
-    font-weight: 500;
-    line-height: 1.4;
-    color: #000;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 10px;
-}
-.book-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 10px;
-}
-.badge {
-    font-size: 11px;
-    padding: 3px 8px;
-    border-radius: 20px;
-    background: #f0f0f0;
-    color: #666;
-    border: 0.5px solid #ddd;
-}
-.price-tag {
-    font-size: 13px;
-    font-weight: 500;
-    color: #0F6E56;
-}
-</style>
- 
-            <!-- ここまで -->
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div class="box">
-
-
-        <!-- 新レイアウト古本リンクセクション -->
-        
-        <div class="section used-books">
-            <h3 class="section-title">♻️古本</h3>
-            <div class="book-item">
-                <div class="info">
-                    <div class="shop-name">bookoff</div>
-                </div>
-
-                <script>              
-                    var dynamicKeyword = "{{ results2['Items'][0]['Item']['title']}}";              
-                    var dynamicLink = "https://shopping.bookoff.co.jp/search/keyword/" + encodeURIComponent(dynamicKeyword);                         
-                    document.write('<a href="' + dynamicLink + '"target="_blank" >' + '探す' + '</a>');
-                </script>
-            </div>
-
-            <div class="book-item">
-                <div class="info">
-                    <div class="shop-name">netoff</div>
-   
-                </div>
-                
-                <script>              
-                    var netoffKeyword = "{{ results2['Items'][0]['Item']['title']}}";              
-                    var netoffLink = "https://www.netoff.co.jp/cmdtyallsearch?word=" + encodeURIComponent(netoffKeyword);                         
-                    document.write('<a href="' + netoffLink + '"target="_blank" >' + '探す' + '</a>');
-                </script>
-            </div>
-
-
-
-            <!-- メルカリ -->
-            <div class="book-item">
-                <div class="info">
-                    <div class="shop-name">メルカリ</div>
-                </div>             
-                <script>
-                    var merukariKeyword = "{{ results2['Items'][0]['Item']['title']}}";
-                    var merukariURL = "https://jp.mercari.com/search?keyword=" + encodeURIComponent(merukariKeyword)+"&status=on_sale&category_id=5&afid=4700086878";              
-                    document.write('<a href="' + merukariURL + '" class="merukarilink">' + '探す' + '</a>');
-                </script>
-            </div>
-
-
-        </div>
-        <!-- ◯rakuten市場セクション -->
-        <div class="section used-books">
-            <h3 class="section-title">🛒楽天市場</h3>
-            {% if rakuten_r %}
-                {% for item in rakuten_r['Items'] %}
-            <div class="book-item">
-                <div class="info">
-                    <div class="shop-name">{{ item['Item']['shopName'] }} </div>
-                    <!-- <div class="price">{{ item['Item']['itemPrice'] }}円</div> -->
-                </div>
-                <div class="status in-stock">{{ item['Item']['itemPrice'] }}円</div>
-                <a href="{{ item['Item']['affiliateUrl'] }}" target="_blank">探す</a>
-            </div>
-            {% endfor %}{% else %}<p>取得できませんでした</p>{% endif %}
-        </div>
-        
-        <!-- ◯図書館セクション -->
-
-        <div class="section used-books">
-            <h3 class="section-title">📖図書館</h3>
-            <!-- カーリルリンクボタン -->
-            <div class="linkbtn">
-            <script>
-                var calilKeyword = "{{ results2['Items'][0]['Item']['title']}}";
-                var calil_URL = "https://calil.jp/search?q=" + encodeURIComponent(calilKeyword);              
-                document.write('<a href="' + calil_URL + '" class="calillink">' + 'カーリルで探す' + '</a>');
-            </script>
-            </div>
-            <!-- 詳細のリンク -->
-            <div class="sysIDlink">
-            <span style="font-size: 70%;"><a href="{{url_for('prefecture')}}">
-              システムIDについて
-            </a></span>
-            </div>
-             <!-- 図書館システムID入力フォーム-->
-            <div class="formbox0">
-            <div class="formbox1">
-            <form  id="myForm" action="/libget" method="post" enctype="multipart/form-data">
-                
-                <input type="text" placeholder="図書館システムID" id="systemid" name="systemid" value="{{systemid}}"/>
-                
-                <button type="submit" id="submitButton" >保存</button>
-                
-            </form>
-            </div>
-            <div class="formbox2">
-            <button onclick="location.reload();">検索</button></div>
-            <div class="floatclear"></div>
-            
-            </div>
-            <div>システムIDをペーストしたら「保存」➜「検索」をクリック</div>
-            <!-- ここまで図書館システムID入力フォーム-->         
-
-            {% if lib_results is mapping %}
-                
-                {% for key, value in lib_results.items() %}
-                <div class="book-item">
-                    <div class="info">
-                        <div class="shop-name">{{ key }}</div>                       
+                <div class="book-meta">
+                    <div class="book-title">
+                        <a href="{{ results2['Items'][0]['Item']['affiliateUrl'] }}">
+                            {{ results2['Items'][0]['Item']['title'] }}
+                        </a>
                     </div>
-                    <div class="status in-stock">{{ value }}</div>                  
+                    <div class="book-badges">
+                        <span class="badge">{{ results2['Items'][0]['Item']['author'] }}</span>
+                        <span class="badge">{{ results2['Items'][0]['Item']['publisherName'] }}</span>
+                        <span class="badge">ISBN {{ results2['Items'][0]['Item']['isbn'] }}</span>
+                    </div>
+                    <div class="price-tag">¥{{ results2['Items'][0]['Item']['itemPrice'] }}（定価）</div>
                 </div>
-                {% endfor %}
-               
-                {% else %}
-                    {% if lib_results %}
-        
-                    {% else %}取得できません
-                    {% endif %}
-            {% endif %}
-           
-            {% if reserveurl %}
-            <div class="reserve-link">
-            <a href=" {{reserveurl}}" >図書館予約ページへ</a></div>                 
-            {% else %}{% endif %}
-        </div>
-        </div>
-        <!-- ◯新品セクション -->
-        <div class="section used-books">
-            <h3 class="section-title">🛒オンライン書店</h3>
-            <!-- アマゾンリンク -->
-            <div class="book-item">
-                <div class="info">
-                    <div class="shop-name">amazon</div>                    
-                </div>
-                <div class="status in-stock">定価</div>
-                <script>              
-                    var amazonKeyword = "{{ results2['Items'][0]['Item']['title']}}";              
-                    var amazonLink = "https://www.amazon.co.jp/gp/search?ie=UTF8&tag=page98-22&linkCode=ur2&linkId=11cc520666ec268afb23d8ea22cd0186&camp=247&creative=1211&index=books&keywords=" + encodeURIComponent(amazonKeyword);                         
-                    document.write('<a href="' + amazonLink + '" class="">' + '探す' + '</a>');
-                </script>
             </div>
-            <!-- 楽天ブックスリンク -->
-            <div class="book-item">
-                <div class="info">
-                    <div class="shop-name">楽天ブックス</div>                   
+
+            <div class="box">
+
+                <!-- 古本セクション -->
+                <div class="section used-books">
+                    <h3 class="section-title">♻️古本</h3>
+                    <div class="book-item">
+                        <div class="info"><div class="shop-name">BookOff</div></div>
+                        <script>
+                            var bookoffLink = "https://shopping.bookoff.co.jp/search/keyword/" + encodeURIComponent("{{ results2['Items'][0]['Item']['isbn']}}");
+                            document.write('<a href="' + bookoffLink + '" target="_blank">探す</a>');
+                        </script>
+                    </div>
+                    <div class="book-item">
+                        <div class="info"><div class="shop-name">NetOff</div></div>
+                        <script>
+                            var netoffLink = "https://www.netoff.co.jp/cmdtyallsearch?word=" + encodeURIComponent("{{ results2['Items'][0]['Item']['title']}}");
+                            document.write('<a href="' + netoffLink + '" target="_blank">探す</a>');
+                        </script>
+                    </div>
+                    <div class="book-item">
+                        <div class="info"><div class="shop-name">メルカリ</div></div>
+                        <script>
+                            var merukariURL = "https://jp.mercari.com/search?keyword=" + encodeURIComponent("{{ results2['Items'][0]['Item']['title']}}")+"&status=on_sale&category_id=5&afid=4700086878";
+                            document.write('<a href="' + merukariURL + '" target="_blank">探す</a>');
+                        </script>
+                    </div>
                 </div>
-                <div class="status in-stock">定価</div>
-                <a href="{{ results2['Items'][0]['Item']['affiliateUrl']}}" class="">探す</a>   
-            </div>  
-        </div>
+
+                <!-- 楽天市場セクション -->
+                <div class="section used-books">
+                    <h3 class="section-title">🛒楽天市場</h3>
+                    {% if rakuten_r %}
+                        {% for item in rakuten_r['Items'] %}
+                        <div class="book-item">
+                            <div class="info">
+                                <div class="shop-name">{{ item['Item']['shopName'] }}</div>
+                            </div>
+                            <div class="status in-stock">{{ item['Item']['itemPrice'] }}円</div>
+                            <a href="{{ item['Item']['affiliateUrl'] }}" target="_blank">探す</a>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>取得できませんでした</p>
+                    {% endif %}
+                </div>
+
+                <!-- 図書館セクション -->
+                <div class="section used-books">
+                    <h3 class="section-title">📖図書館</h3>
+                    <div class="linkbtn">
+                        <script>
+                            var calil_URL = "https://calil.jp/search?q=" + encodeURIComponent("{{ results2['Items'][0]['Item']['title']}}");
+                            document.write('<a href="' + calil_URL + '">カーリルで探す</a>');
+                        </script>
+                    </div>
+                    <div class="sysIDlink">
+                        <span style="font-size: 70%;"><a href="{{ url_for('prefecture') }}">システムIDについて</a></span>
+                    </div>
+                    <div class="formbox0">
+                        <div class="formbox1">
+                            <form id="myForm" action="/libget" method="post" enctype="multipart/form-data">
+                                <input type="text" placeholder="図書館システムID" id="systemid" name="systemid" value="{{ systemid }}"/>
+                                <button type="submit" id="submitButton">保存</button>
+                            </form>
+                        </div>
+                        <div class="formbox2">
+                            <button onclick="location.reload();">検索</button>
+                        </div>
+                    </div>
+                    <div>システムIDをペーストしたら「保存」➜「検索」をクリック</div>
+
+                    {% if lib_results is mapping %}
+                        {% for key, value in lib_results.items() %}
+                        <div class="book-item">
+                            <div class="info"><div class="shop-name">{{ key }}</div></div>
+                            <div class="status in-stock">{{ value }}</div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        {% if lib_results %}{% else %}取得できません{% endif %}
+                    {% endif %}
+
+                    {% if reserveurl %}
+                    <div class="reserve-link">
+                        <a href="{{ reserveurl }}">図書館予約ページへ</a>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- オンライン書店セクション -->
+                <div class="section used-books">
+                    <h3 class="section-title">🛒オンライン書店</h3>
+                    <div class="book-item">
+                        <div class="info"><div class="shop-name">Amazon</div></div>
+                        <div class="status in-stock">定価</div>
+                        <script>
+                            var amazonLink = "https://www.amazon.co.jp/gp/search?ie=UTF8&tag=page98-22&linkCode=ur2&linkId=11cc520666ec268afb23d8ea22cd0186&camp=247&creative=1211&index=books&keywords=" + encodeURIComponent("{{ results2['Items'][0]['Item']['title']}}");
+                            document.write('<a href="' + amazonLink + '">探す</a>');
+                        </script>
+                    </div>
+                    <div class="book-item">
+                        <div class="info"><div class="shop-name">楽天ブックス</div></div>
+                        <div class="status in-stock">定価</div>
+                        <a href="{{ results2['Items'][0]['Item']['affiliateUrl'] }}">探す</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- フッター -->
+            <div class="footer-contents">
+                <p>他の書店でさがす</p>
+                <button class="bonbon" onclick="copyToClipboard1()">ISBNをコピーする</button>
+                <button class="bonbon" onclick="copyToClipboard2()">タイトルをコピーする</button>
+                <script>
+                    function copyToClipboard1() {
+                        var isbnText = "{{ results2['Items'][0]['Item']['isbn']}}";
+                        var textarea = document.createElement("textarea");
+                        textarea.value = isbnText;
+                        document.body.appendChild(textarea);
+                        textarea.select();
+                        document.execCommand("copy");
+                        document.body.removeChild(textarea);
+                        alert("ISBNをコピーしました");
+                    }
+                    function copyToClipboard2() {
+                        var titleText = "{{ results2['Items'][0]['Item']['title'] }}";
+                        var textarea = document.createElement("textarea");
+                        textarea.value = titleText;
+                        document.body.appendChild(textarea);
+                        textarea.select();
+                        document.execCommand("copy");
+                        document.body.removeChild(textarea);
+                        alert("タイトルをコピーしました");
+                    }
+                </script>
+                <p>
+                    <a class="headlink" href="{{ url_for('index') }}">他の本を検索する</a>
+                </p>
+            </div>
 
         </div>
-  
-        <div class="footer-contents">
-        <p>他の書店でさがす</p>
-        <button class="bonbon" onclick="copyToClipboard1()">ISBNをコピーする</button>
-        <button class="bonbon" onclick="copyToClipboard2()">タイトルをコピーする</button>
-        <script>
-            function copyToClipboard1() {
-                // テキストを取得
-                var isbnText = "{{ results2['Items'][0]['Item']['isbn']}}";
-                var textarea = document.createElement("textarea");
-                textarea.value = isbnText;
-                // ボディに追加
-                document.body.appendChild(textarea);
-                // テキストエリアを選択してコピー
-                textarea.select();
-                document.execCommand("copy");
-                // テキストエリアを削除
-                document.body.removeChild(textarea);
-                // コピーが完了したらアラートを表示
-                alert("ISBNをコピーしました");
-            }
-            function copyToClipboard2() {
-                var titleText =  "{{ results2['Items'][0]['Item']['title'] }}";
-                var textarea = document.createElement("textarea");
-                textarea.value = titleText;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand("copy");
-                document.body.removeChild(textarea);
-                alert("タイトルをコピーしました");
-            }
-        </script>
-        <p>
-            <a class="headlink" href="{{url_for('index')}}"> 他の本を検索する </a>
-        </p>            
-        </div>
-
-
-        <!-- ここまで新レイアウト -->
-
         {% endif %}
-    </body>
-</html>		
+    </div>
+</body>
+</html>
