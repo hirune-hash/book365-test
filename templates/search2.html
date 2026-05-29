@@ -24,7 +24,7 @@
     }
 
     /* 書籍ヒーローエリア */
- .book-hero {
+        .book-hero {
     display: flex;
     gap: 16px;
     align-items: flex-start;
@@ -45,6 +45,49 @@
     overflow-wrap: anywhere;
 }
 
+
+.book-cover-wrap {
+    flex-shrink: 0;
+}
+
+.book-cover-wrap img {
+    width: 140px;
+    border-radius: 4px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    display: block;
+}
+
+
+.book-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.badge {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    background: #f0f0f0;
+    color: #666;
+    border: 0.5px solid #ddd;
+}
+
+.price-tag {
+    font-size: 13px;
+    font-weight: 500;
+    color: #0F6E56;
+}
+
+
+ 
+    .price-tag {
+        font-size: 16px;
+        font-weight: 500;
+        color: #0F6E56;
+    }
+
 /* スマホ */
 @media (max-width: 600px) {
 
@@ -57,7 +100,7 @@
     }
 
     .book-cover-wrap img {
-        width: 110px;
+        width: 130px;
         max-width: 35vw;
     }
 
@@ -68,11 +111,6 @@
     }
 
 }
-    .price-tag {
-        font-size: 16px;
-        font-weight: 500;
-        color: #0F6E56;
-    }
 
     /* セクション共通 */
     .section {
