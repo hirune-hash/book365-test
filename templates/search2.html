@@ -249,7 +249,7 @@
                     <div class="sysIDlink">
                         <span style="font-size: 70%;"><a href="{{ url_for('prefecture') }}">システムIDについて</a></span>
                     </div>
-                    <div class="formbox0">
+                    <!-- <div class="formbox0">
                         <div class="formbox1">
                             <form id="myForm" action="/libget" method="post" enctype="multipart/form-data">
                                 <input type="text" placeholder="図書館システムID" id="systemid" name="systemid" value="{{ systemid }}"/>
@@ -260,7 +260,41 @@
                             <button onclick="location.reload();">検索</button>
                         </div>
                     </div>
-                    <div>システムIDをペーストしたら「保存」➜「検索」をクリック</div>
+                    <div>システムIDをペーストしたら「保存」➜「検索」をクリック</div> -->
+                    <!-- 図書館システムID入力フォーム test-->
+                    <div class="formbox0">
+                        <div class="formbox1">
+                            <input type="text" placeholder="図書館システムID" id="systemid" name="systemid" value="{{ systemid }}"/>
+                        </div>
+                        <div class="formbox2">
+                            <button onclick="saveAndSearch()">保存して検索</button>
+                        </div>
+                    </div>
+                    <div>システムIDをペーストしたら「保存して検索」をクリック</div>
+
+                    <script>
+                        function saveAndSearch() {
+                            var systemid = document.getElementById('systemid').value;
+                            var formData = new FormData();
+                            formData.append('systemid', systemid);
+                            fetch('/libget', {
+                                method: 'POST',
+                                body: formData
+                            }).then(function() {
+                                location.reload();
+                            });
+                        }
+                    </script>
+                    <!-- 図書館システムID入力フォーム testここまで-->
+
+
+
+
+
+
+
+
+
 
                     {% if lib_results is mapping %}
                         {% for key, value in lib_results.items() %}
@@ -281,31 +315,7 @@
                 </div>
 
 
-                <!-- 図書館システムID入力フォーム test-->
-<div class="formbox0">
-    <div class="formbox1">
-        <input type="text" placeholder="図書館システムID" id="systemid" name="systemid" value="{{ systemid }}"/>
-    </div>
-    <div class="formbox2">
-        <button onclick="saveAndSearch()">保存して検索</button>
-    </div>
-</div>
-<div>システムIDをペーストしたら「保存して検索」をクリック</div>
-
-<script>
-    function saveAndSearch() {
-        var systemid = document.getElementById('systemid').value;
-        var formData = new FormData();
-        formData.append('systemid', systemid);
-        fetch('/libget', {
-            method: 'POST',
-            body: formData
-        }).then(function() {
-            location.reload();
-        });
-    }
-</script>
-  <!-- 図書館システムID入力フォーム testここまで-->
+                
 
 
 
