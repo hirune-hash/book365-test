@@ -237,6 +237,98 @@
             </div>
 
             <div class="box">
+                <!-- 図書館セクション -->
+                <div class="section used-books">
+                    <h3 class="section-title">📖図書館</h3>
+                    <div class="linkbtn">
+                        <script>
+                            var calil_URL = "https://calil.jp/search?q=" + encodeURIComponent("{{ results2['Items'][0]['Item']['title']}}");
+                            document.write('<a href="' + calil_URL + '">カーリルで探す</a>');
+                        </script>
+                    </div>
+                    <div class="sysIDlink">
+                        <span style="font-size: 70%;"><a href="{{ url_for('prefecture') }}">システムIDについて</a></span>
+                    </div>
+                    <div class="formbox0">
+                        <div class="formbox1">
+                            <form id="myForm" action="/libget" method="post" enctype="multipart/form-data">
+                                <input type="text" placeholder="図書館システムID" id="systemid" name="systemid" value="{{ systemid }}"/>
+                                <button type="submit" id="submitButton">保存</button>
+                            </form>
+                        </div>
+                        <div class="formbox2">
+                            <button onclick="location.reload();">検索</button>
+                        </div>
+                    </div>
+                    <div>システムIDをペーストしたら「保存」➜「検索」をクリック</div>
+
+                    {% if lib_results is mapping %}
+                        {% for key, value in lib_results.items() %}
+                        <div class="book-item">
+                            <div class="info"><div class="shop-name">{{ key }}</div></div>
+                            <div class="status in-stock">{{ value }}</div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        {% if lib_results %}{% else %}取得できません{% endif %}
+                    {% endif %}
+
+                    {% if reserveurl %}
+                    <div class="reserve-link">
+                        <a href="{{ reserveurl }}">図書館予約ページへ</a>
+                    </div>
+                    {% endif %}
+                </div>
+
+
+                <!-- 図書館システムID入力フォーム test-->
+<div class="formbox0">
+    <div class="formbox1">
+        <input type="text" placeholder="図書館システムID" id="systemid" name="systemid" value="{{ systemid }}"/>
+    </div>
+    <div class="formbox2">
+        <button onclick="saveAndSearch()">保存して検索</button>
+    </div>
+</div>
+<div>システムIDをペーストしたら「保存して検索」をクリック</div>
+
+<script>
+    function saveAndSearch() {
+        var systemid = document.getElementById('systemid').value;
+        var formData = new FormData();
+        formData.append('systemid', systemid);
+        fetch('/libget', {
+            method: 'POST',
+            body: formData
+        }).then(function() {
+            location.reload();
+        });
+    }
+</script>
+  <!-- 図書館システムID入力フォーム testここまで-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 <!-- 古本セクション -->
                 <div class="section used-books">
@@ -282,49 +374,7 @@
                     {% endif %}
                 </div>
 
-                <!-- 図書館セクション -->
-                <div class="section used-books">
-                    <h3 class="section-title">📖図書館</h3>
-                    <div class="linkbtn">
-                        <script>
-                            var calil_URL = "https://calil.jp/search?q=" + encodeURIComponent("{{ results2['Items'][0]['Item']['title']}}");
-                            document.write('<a href="' + calil_URL + '">カーリルで探す</a>');
-                        </script>
-                    </div>
-                    <div class="sysIDlink">
-                        <span style="font-size: 70%;"><a href="{{ url_for('prefecture') }}">システムIDについて</a></span>
-                    </div>
-                    <div class="formbox0">
-                        <div class="formbox1">
-                            <form id="myForm" action="/libget" method="post" enctype="multipart/form-data">
-                                <input type="text" placeholder="図書館システムID" id="systemid" name="systemid" value="{{ systemid }}"/>
-                                <button type="submit" id="submitButton">保存</button>
-                            </form>
-                        </div>
-                        <div class="formbox2">
-                            <button onclick="location.reload();">検索</button>
-                        </div>
-                    </div>
-                    <div>システムIDをペーストしたら「保存」➜「検索」をクリック</div>
-
-                    {% if lib_results is mapping %}
-                        {% for key, value in lib_results.items() %}
-                        <div class="book-item">
-                            <div class="info"><div class="shop-name">{{ key }}</div></div>
-                            <div class="status in-stock">{{ value }}</div>
-                        </div>
-                        {% endfor %}
-                    {% else %}
-                        {% if lib_results %}{% else %}取得できません{% endif %}
-                    {% endif %}
-
-                    {% if reserveurl %}
-                    <div class="reserve-link">
-                        <a href="{{ reserveurl }}">図書館予約ページへ</a>
-                    </div>
-                    {% endif %}
-                </div>
-
+                
                 <!-- オンライン書店セクション -->
                 <div class="section used-books">
                     <h3 class="section-title">🛒オンライン書店</h3>
