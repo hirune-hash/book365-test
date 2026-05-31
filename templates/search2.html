@@ -208,7 +208,7 @@
 <body>
     <div id="loading"></div>
     <h2>検索結果</h2>
-    <span style="font-size: 80%;">※このサイトは広告リンクを使用しています</span>
+    <span style="font-size: 80%;"></span>
 
     <div id="search-results2">
         {% if results2 %}
@@ -247,7 +247,7 @@
                         </script>
                     </div>
                     <div class="sysIDlink">
-                        <span style="font-size: 70%;"><a href="{{ url_for('prefecture') }}">システムIDについて</a></span>
+                        <span style="font-size: 1000%;"><a href="{{ url_for('prefecture') }}">システムIDについて</a></span>
                     </div>
                     <!-- <div class="formbox0">
                         <div class="formbox1">
@@ -270,7 +270,7 @@
                             <button onclick="saveAndSearch()">保存して検索</button>
                         </div>
                     </div>
-                    <div>システムIDをペーストしたら「保存して検索」をクリック</div>
+                    <div>システムIDを貼り付けたら「保存して検索」をクリック</div>
 
                     <script>
                         function saveAndSearch() {
@@ -315,29 +315,7 @@
                 </div>
 
 
-                
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+              
 
 
                 <!-- 古本セクション -->
@@ -390,7 +368,7 @@
                     <h3 class="section-title">🛒オンライン書店</h3>
                     <div class="book-item">
                         <div class="info"><div class="shop-name">Amazon</div></div>
-                        <div class="status in-stock">定価</div>
+                        <div class="status in-stock">¥{{ results2['Items'][0]['Item']['itemPrice'] }}（</div>
                         <script>
                             var amazonLink = "https://www.amazon.co.jp/gp/search?ie=UTF8&tag=page98-22&linkCode=ur2&linkId=11cc520666ec268afb23d8ea22cd0186&camp=247&creative=1211&index=books&keywords=" + encodeURIComponent("{{ results2['Items'][0]['Item']['title']}}");
                             document.write('<a href="' + amazonLink + '">探す</a>');
@@ -398,7 +376,7 @@
                     </div>
                     <div class="book-item">
                         <div class="info"><div class="shop-name">楽天ブックス</div></div>
-                        <div class="status in-stock">定価</div>
+                        <div class="status in-stock">¥{{ results2['Items'][0]['Item']['itemPrice'] }}（</div>
                         <a href="{{ results2['Items'][0]['Item']['affiliateUrl'] }}">探す</a>
                     </div>
                 </div>
