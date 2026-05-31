@@ -204,6 +204,56 @@
 
     /* フッター */
     .footer-contents { text-align: center; }
+
+     /* 検索ボックス */
+ .search-box {
+    max-width: 420px;
+    margin: 0 auto;
+    background: #f7f7f5;
+    border: 1.5px solid #e4e4e0;
+    border-radius: 20px;
+    padding: 6px 6px 6px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: border-color 0.2s;
+}
+.search-box:focus-within {
+    border-color: #1D9E75;
+    background: #fff;
+}
+.search-box i { color: #888; font-size: 15px; flex-shrink: 0; }
+.search-box input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 15px;
+    outline: none;
+}
+.search-box input::placeholder { color: #888; }
+.search-btn {
+    background: #1D9E75;
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+.search-btn:hover { background: #0a5c41; }
+
+
+
+
+
+
+
 </style>
 
 <body>
@@ -421,8 +471,38 @@
 
 
                 <p>
-                    <a class="headlink" href="{{ url_for('index') }}">他の本を検索する</a>
+                   他の本を検索する
+
                 </p>
+                <div class="searchbox">
+                <form action="/search" method="GET">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="search-input" name="query" placeholder="タイトル・著者・ISBN" autocomplete="off" />
+                        <button class="search-btn" type="submit">
+                        <i class="fa-solid fa-arrow-right"></i>
+                        検索
+                        </button>
+                    </div>
+                    </form>      
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <p>
                 <a href="https://b.hatena.ne.jp/entry/s/page98.shop/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label-counter" data-hatena-bookmark-lang="ja" data-hatena-bookmark-height="25" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
 
