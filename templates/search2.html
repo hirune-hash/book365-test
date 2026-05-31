@@ -232,7 +232,7 @@
                         <span class="badge">{{ results2['Items'][0]['Item']['publisherName'] }}</span>
                         <span class="badge">ISBN {{ results2['Items'][0]['Item']['isbn'] }}</span>
                     </div>
-                    <div class="price-tag">¥{{ results2['Items'][0]['Item']['itemPrice'] }}（定価）</div>
+                    <div class="price-tag">¥{{ results2['Items'][0]['Item']['itemPrice'] }}</div>
                 </div>
             </div>
 
@@ -240,14 +240,9 @@
                 <!-- 図書館セクション -->
                 <div class="section used-books">
                     <h3 class="section-title">📖図書館</h3>
-                    <div class="linkbtn">
-                        <script>
-                            var calil_URL = "https://calil.jp/search?q=" + encodeURIComponent("{{ results2['Items'][0]['Item']['title']}}");
-                            document.write('<a href="' + calil_URL + '">カーリルで探す</a>');
-                        </script>
-                    </div>
+
                     <div class="sysIDlink">
-                        <span style="font-size: 1000%;"><a href="{{ url_for('prefecture') }}">システムIDについて</a></span>
+                        <span style="font-size: 100%;"><a href="{{ url_for('prefecture') }}">システムIDについて</a></span>
                     </div>
                     <!-- <div class="formbox0">
                         <div class="formbox1">
@@ -313,6 +308,12 @@
                     </div>
                     {% endif %}
                 </div>
+                      <div class="linkbtn">
+                        <script>
+                            var calil_URL = "https://calil.jp/search?q=" + encodeURIComponent("{{ results2['Items'][0]['Item']['title']}}");
+                            document.write('<a href="' + calil_URL + '">カーリルで探す</a>');
+                        </script>
+                    </div>              
 
 
               
