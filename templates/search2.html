@@ -116,7 +116,7 @@
 
     /* セクション共通 */
     .section {
-        padding: 20px;
+        padding: 10px 20px;
     }
     .used-books {
         background: #f8faff;
@@ -134,7 +134,7 @@
         padding: 15px;
         border: 1px solid #ddd;
         border-radius: 8px;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         background-color: #ffffff;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
@@ -183,6 +183,7 @@
     .linkbtn {
         text-align: center;
         margin-top: 20px;
+        background: #f8faff;
     }
     .linkbtn a {
         text-decoration: none;
@@ -354,7 +355,7 @@
                             <div class="info">
                                 <div class="shop-name">{{ item['Item']['shopName'] }}</div>
                             </div>
-                            <div class="status in-stock">{{ item['Item']['itemPrice'] }}円</div>
+                            <div class="status in-stock">¥{{ item['Item']['itemPrice'] }}</div>
                             <a href="{{ item['Item']['affiliateUrl'] }}" target="_blank">探す</a>
                         </div>
                         {% endfor %}
@@ -377,7 +378,7 @@
                     </div>
                     <div class="book-item">
                         <div class="info"><div class="shop-name">楽天ブックス</div></div>
-                        <div class="status in-stock">¥{{ results2['Items'][0]['Item']['itemPrice'] }}（</div>
+                        <div class="status in-stock">¥{{ results2['Items'][0]['Item']['itemPrice'] }}</div>
                         <a href="{{ results2['Items'][0]['Item']['affiliateUrl'] }}">探す</a>
                     </div>
                 </div>
@@ -411,6 +412,13 @@
                         alert("タイトルをコピーしました");
                     }
                 </script>
+                <p>
+                <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3772208&pid=892624007" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3772208&pid=892624007" height="1" width="1" border="0">紀伊國屋書店　ウェブストア</a>
+                <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3772208&pid=892624009" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3772208&pid=892624009" height="1" width="1" border="0">ハイブリッド型総合書店【honto】</a>
+            </p>
+
+
+
                 <p>
                     <a class="headlink" href="{{ url_for('index') }}">他の本を検索する</a>
                 </p>

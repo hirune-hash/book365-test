@@ -14,9 +14,27 @@
             <br>・システムIDをコピーし、クロス検索結果のシステムID入力ボックスに貼り付け
         </p>
         <h2>都道府県一覧</h2>
-        <ul>
+        <!-- <ul>
             {% for prefecture in prefectures %}
                 <li><a href="/prefecture/{{ prefecture }}">{{ prefecture }}</a></li>
             {% endfor %}
-        </ul>
+        </ul> -->
+        {% for region, prefs in regions.items() %}
+            <div class="region-group">
+                <h3 class="region-title">{{ region }}</h3>
+                <ul>
+                    {% for prefecture in prefs %}
+                        <li><a href="/prefecture/{{ prefecture }}">{{ prefecture }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+
+
+
+
+
+
+
+
     </body>
