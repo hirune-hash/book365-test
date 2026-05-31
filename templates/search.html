@@ -150,6 +150,71 @@ window.addEventListener('unload', function() {
       color: #fff;
       z-index: 2;
     }
+     /* 検索ボックス */
+  .search-box {
+    max-width: 420px;
+    margin: 0 auto;
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 6px 6px 6px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: border-color 0.2s;
+    position: relative;
+  }
+  .search-box:focus-within {
+    border-color: var(--green-mid);
+    background: var(--white);
+  }
+  .search-box i {
+    color: var(--text-muted);
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .search-box input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--text-primary);
+    outline: none;
+  }
+  .search-box input::placeholder { color: var(--text-muted); }
+  .search-btn {
+    background: var(--green-mid);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 10px 20px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s, transform 0.1s;
+    flex-shrink: 0;
+  }
+  .search-btn:hover { background: var(--green-dark); }
+  .search-btn:active { transform: scale(0.97); }
+  .search-hint {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 10px;
+    position: relative;
+  }
+
+
+
+
+
+
+
+
     </style>
     
 
@@ -158,12 +223,31 @@ window.addEventListener('unload', function() {
 <div id="top"></div>
        <h2>検索結果</h2>
        <span style="font-size: 80%;">※このサイトは広告リンクを使用しています</span>
+
        <div class="searchbox" style="text-align: center;">
         <form action="/search" method="GET">
             <!-- <label for="search-input">検索:</label> -->
             <input type="text" id="search-input" name="query" />
             <button class="searchbtn" type="submit">検索</button>
-        </form></div>   
+        </form>
+      </div>
+
+    <form action="/search" method="GET">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="search-input" name="query" placeholder="タイトル・著者・ISBN" autocomplete="off" />
+        <button class="search-btn" type="submit">
+          <i class="fa-solid fa-arrow-right"></i>
+          検索
+        </button>
+      </div>
+    </form>      
+
+
+
+
+
+
         <div id="search-results" style="text-align: center;">
         <!-- 検索結果はサーバーサイドで表示 -->
         <div id="loading">検索中です</div>
