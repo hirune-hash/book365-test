@@ -7,29 +7,29 @@
         <title>page98</title>
     </head>
  <style>
-            .item {
-              display: flex;
-              align-items: center;
-              margin-bottom: 15px;
-            }                
-            table img{
-                max-width: 160px;
-                height: auto;              
-            }
-            table {
-                  width: 100%;
-                  border-collapse: collapse;
-                  margin-bottom: 0px;
-                }
-            td {
-                  border: 1px solid #fff;
-                  padding: 0px 10px;
-                  text-align: left;
-                }
-            .medd td:nth-child(2) {
-                width: 200px; /* 2列目の幅を固定 */
-              }
-            
+    .item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }                
+    table img{
+        max-width: 160px;
+        height: auto;              
+    }
+    table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 0px;
+        }
+    td {
+          border: 1px solid #fff;
+          padding: 0px 10px;
+          text-align: left;
+        }
+    .medd td:nth-child(2) {
+        width: 200px; /* 2列目の幅を固定 */
+      }
+    
                 /* メディアクエリ: 768px以下の場合、2列から1列に変更 */
             @media (max-width: 700px) {
                   .medd td{
@@ -82,74 +82,9 @@
 .form{text-align: center;}
       
     </style>
- 
-    <body>  
-
-<div id="loader-bg2" style="text-align: center;">
-    <div id="loader2">
-      <!-- <img src="img-loading.gif" width="80" height="80" alt="Now Loading..." /> -->
-      <p class="loading-text" style="font-weight: bold;">Now Loading...</p>
-    </div></div>
-  
- 
-
-
-<script>
-
-document.addEventListener('DOMContentLoaded', function() {
-// ボタン要素とローディング画面の要素を取得
-var button = document.getElementById('loadButton');
-var loaderBg = document.getElementById('loader-bg2',);
-var loader2 = document.getElementById('loader2',);
-// ボタンがクリックされたときの処理
-button.addEventListener('click', function() {
-    // ローディング画面を表示
-    loaderBg.style.display = 'block';
-    loader2.style.display = 'block';
-    // ここに実際の読み込み処理を追加する場合は、ここに追記してください
-});
-
-// ページがアンロードされる時の処理
-window.addEventListener('unload', function() {
-    // ローディング画面を非表示にする
-    loaderBg.style.display = 'none';
-});
-});
-
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <style>
- @keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
-  }       
-  .loading-text {
-    animation: blink 1s infinite;
-  }
-    #loader-bg2 {
-      display: none;
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0px;
-      left: 0px;
-      background: #ff7300;
-      z-index: 1;
-    }
-    #loader2 {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 200px;
-      height: 200px;
-      margin-top: -100px;
-      margin-left: -100px;
-      text-align: center;
-      color: #fff;
-      z-index: 2;
-    }
+
+
      /* 検索ボックス */
   .search-box {
     max-width: 420px;
@@ -215,7 +150,91 @@ window.addEventListener('unload', function() {
 
 
 
+
+
+
+
+
+
+
+
+ @keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }       
+  .loading-text {
+    animation: blink 1s infinite;
+  }
+    #loader-bg2 {
+      display: none;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      background: #ff7300;
+      z-index: 1;
+    }
+    #loader2 {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 200px;
+      height: 200px;
+      margin-top: -100px;
+      margin-left: -100px;
+      text-align: center;
+      color: #fff;
+      z-index: 2;
+    }
+
+
+
+
+
+
     </style>
+
+
+ 
+    <body>  
+
+<div id="loader-bg2" style="text-align: center;">
+    <div id="loader2">
+      <!-- <img src="img-loading.gif" width="80" height="80" alt="Now Loading..." /> -->
+      <p class="loading-text" style="font-weight: bold;">Now Loading...</p>
+    </div></div>
+  
+ 
+
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+// ボタン要素とローディング画面の要素を取得
+var button = document.getElementById('loadButton');
+var loaderBg = document.getElementById('loader-bg2',);
+var loader2 = document.getElementById('loader2',);
+// ボタンがクリックされたときの処理
+button.addEventListener('click', function() {
+    // ローディング画面を表示
+    loaderBg.style.display = 'block';
+    loader2.style.display = 'block';
+    // ここに実際の読み込み処理を追加する場合は、ここに追記してください
+});
+
+// ページがアンロードされる時の処理
+window.addEventListener('unload', function() {
+    // ローディング画面を非表示にする
+    loaderBg.style.display = 'none';
+});
+});
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
     
 
 
