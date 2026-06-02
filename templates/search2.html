@@ -387,19 +387,8 @@
                     <div class="sysIDlink">
                         <span style="font-size: 100%;"><a href="{{ url_for('prefecture') }}">システムIDについて</a></span>
                     </div>
-                    <!-- <div class="formbox0">
-                        <div class="formbox1">
-                            <form id="myForm" action="/libget" method="post" enctype="multipart/form-data">
-                                <input type="text" placeholder="図書館システムID" id="systemid" name="systemid" value="{{ systemid }}"/>
-                                <button type="submit" id="submitButton">保存</button>
-                            </form>
-                        </div>
-                        <div class="formbox2">
-                            <button onclick="location.reload();">検索</button>
-                        </div>
-                    </div>
-                    <div>システムIDをペーストしたら「保存」➜「検索」をクリック</div> -->
-                    <!-- 図書館システムID入力フォーム test-->
+
+                    <!-- 図書館システムID入力フォーム-->
                     <div class="formbox0">
                         <div class="formbox1">
                             <input type="text" placeholder="図書館システムID" id="systemid" name="systemid" value="{{ systemid }}"/>
@@ -447,14 +436,14 @@
 
                     {% if reserveurl %}
                     <div class="reserve-link">
-                        <a href="{{ reserveurl }}">図書館予約ページへ</a>
+                        <a href="{{ reserveurl }}" target="_blank">図書館予約ページへ</a>
                     </div>
                     {% endif %}
                 </div>
                       <div class="linkbtn">
                         <script>
                             var calil_URL = "https://calil.jp/search?q=" + encodeURIComponent("{{ results2['Items'][0]['Item']['title']}}");
-                            document.write('<a href="' + calil_URL + '">カーリルで探す</a>');
+                            document.write('<a href="' + calil_URL + '" target="_blank">カーリルで探す</a>');
                         </script>
                     </div>              
 
@@ -515,13 +504,13 @@
                         <div class="status in-stock">¥{{ results2['Items'][0]['Item']['itemPrice'] }}</div>
                         <script>
                             var amazonLink = "https://www.amazon.co.jp/gp/search?ie=UTF8&tag=page98-22&linkCode=ur2&linkId=11cc520666ec268afb23d8ea22cd0186&camp=247&creative=1211&index=books&keywords=" + encodeURIComponent("{{ results2['Items'][0]['Item']['title']}}");
-                            document.write('<a href="' + amazonLink + '">探す</a>');
+                            document.write('<a href="' + amazonLink + '"target="_blank">探す</a>');
                         </script>
                     </div>
                     <div class="book-item">
                         <div class="info"><div class="shop-name">楽天ブックス</div></div>
                         <div class="status in-stock">¥{{ results2['Items'][0]['Item']['itemPrice'] }}</div>
-                        <a href="{{ results2['Items'][0]['Item']['affiliateUrl'] }}">探す</a>
+                        <a href="{{ results2['Items'][0]['Item']['affiliateUrl'] }}" target="_blank">探す</a>
                     </div>
                 </div>
 
@@ -583,10 +572,10 @@
 
                     <p class="footer-section-title"><i class="fa-solid fa-store"></i> 他の書店でさがす</p>
                     <div class="footer-shop-links">
-                        <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3772208&pid=892624007" rel="nofollow" class="footer-shop-btn">
+                        <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3772208&pid=892624007" rel="nofollow" class="footer-shop-btn" target="_blank">
                             <i class="fa-solid fa-book"></i> 紀伊國屋書店
                         </a>
-                        <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3772208&pid=892624009" rel="nofollow" class="footer-shop-btn">
+                        <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=3772208&pid=892624009" rel="nofollow" class="footer-shop-btn" target="_blank">
                             <i class="fa-solid fa-book-open"></i> ハイブリッド型総合書店【honto】
                         </a>
                     </div>
