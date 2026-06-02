@@ -595,43 +595,6 @@
                 </div>
 
                 <!-- シェア -->
-                <div class="footer-section">
-                    <p class="footer-section-title"><i class="fa-solid fa-share-nodes"></i> シェアする</p>
-                    <div class="footer-share-row">
-                        <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="BOOK365" data-hashtags="読書" data-show-count="false">Tweet</a>
-                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                        <a href="https://b.hatena.ne.jp/entry/s/page98.shop/" class="hatena-bookmark-button" data-hatena-bookmark-layout="basic-label-counter" data-hatena-bookmark-lang="ja" data-hatena-bookmark-height="25" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-                        <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
-                        <div class="line-it-button" data-lang="ja" data-type="share-a" data-env="REAL" data-url="https://book365.onrender.com/" data-color="default" data-size="large" data-count="true" data-ver="3" style="display: none;"></div>
-                        <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
-                    </div>
-                </div>
-
-                <!-- 他の本を検索 -->
-                <div class="footer-section">
-                    <p class="footer-section-title"><i class="fa-solid fa-magnifying-glass"></i> 他の本を検索する</p>
-                    <form action="/search" method="GET">
-                        <div class="search-box">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            <input type="text" name="query" placeholder="タイトル・著者・ISBN" autocomplete="off" />
-                            <button class="search-btn" type="submit">
-                                <i class="fa-solid fa-arrow-right"></i> 検索
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- トップへ戻るリンク -->
-                <div class="footer-back">
-                    <a href="{{ url_for('index') }}" class="footer-back-btn">
-                        <i class="fa-solid fa-house"></i> トップページへ
-                    </a>
-                </div>
-
-</div>
-
-
-
 <!-- シェアセクション（footer-sectionの中に差し替え） -->
 <div class="footer-section">
     <p class="footer-section-title"><i class="fa-solid fa-share-nodes"></i> シェアする</p>
@@ -689,12 +652,40 @@
     })();
 </script>
 
+                <!-- 他の本を検索 -->
+                <div class="footer-section">
+                    <p class="footer-section-title"><i class="fa-solid fa-magnifying-glass"></i> 他の本を検索する</p>
+                    <form action="/search" method="GET">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" name="query" placeholder="タイトル・著者・ISBN" autocomplete="off" />
+                            <button class="search-btn" type="submit">
+                                <i class="fa-solid fa-arrow-right"></i> 検索
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- トップへ戻るリンク -->
+                <div class="footer-back">
+                    <a href="{{ url_for('index') }}" class="footer-back-btn">
+                        <i class="fa-solid fa-house"></i> トップページへ
+                    </a>
+                </div>
+
+</div>
+
+
+
+
+
 <!-- ↓styleブロックに追加するCSS -->
 <style>
 .share-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    justify-content: center;
 }
 .share-btn {
     display: inline-flex;
