@@ -632,6 +632,97 @@
 
 
 
+<!-- シェアセクション（footer-sectionの中に差し替え） -->
+<div class="footer-section">
+    <p class="footer-section-title"><i class="fa-solid fa-share-nodes"></i> シェアする</p>
+    <div class="share-buttons">
+
+        <!-- X (Twitter) -->
+        <a class="share-btn share-x"
+           id="share-x-btn"
+           href="#"
+           target="_blank"
+           rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            Xでシェア
+        </a>
+
+        <!-- Threads -->
+        <a class="share-btn share-threads"
+           id="share-threads-btn"
+           href="#"
+           target="_blank"
+           rel="noopener noreferrer">
+            <svg viewBox="0 0 192 192" fill="currentColor" width="15" height="15"><path d="M141.537 88.988a66 66 0 0 0-2.518-1.143c-1.482-27.307-16.403-42.94-41.457-43.1h-.34c-14.986 0-27.449 6.396-35.12 18.036l13.779 9.452c5.73-8.695 14.724-10.548 21.348-10.548h.229c8.249.053 14.474 2.452 18.503 7.129 2.932 3.405 4.893 8.11 5.864 14.05-7.314-1.244-15.224-1.626-23.68-1.14-23.82 1.371-39.134 15.264-38.105 34.568.522 9.792 5.4 18.216 13.735 23.719 7.047 4.652 16.124 6.927 25.557 6.412 12.458-.683 22.231-5.436 29.049-14.127 5.178-6.6 8.453-15.153 9.899-25.93 5.937 3.583 10.337 8.298 12.767 13.966 4.132 9.635 4.373 25.468-8.546 38.376-11.319 11.308-24.925 16.2-45.488 16.351-22.809-.169-40.06-7.484-51.275-21.741C35.236 139.966 29.808 120.682 29.605 96c.203-24.682 5.63-43.966 16.133-57.317C57.038 24.435 74.289 17.12 97.098 16.95c22.975.17 40.526 7.52 52.171 21.847 5.71 7.026 9.998 15.83 12.763 26.12l16.216-4.311c-3.381-12.597-8.878-23.459-16.43-32.432C147.031 10.994 125.226 1.205 97.2 1h-.405C68.988 1.205 47.439 11.02 32.734 29.141 19.663 45.264 13.025 67.575 12.8 95.985v.03c.225 28.41 6.863 50.721 19.934 66.844 14.705 18.121 36.254 27.937 62.261 28.142h.405c23.432-.168 39.854-6.299 53.39-19.826 18.01-17.991 17.63-40.395 11.638-54.179-4.134-9.638-12.171-17.407-18.89-21.008zM96.108 132.7c-10.436.596-21.274-4.157-21.818-14.25-.388-7.251 5.222-15.334 22.121-16.327 1.935-.111 3.837-.166 5.706-.166 6.89 0 13.331.671 19.108 1.954-2.173 27.156-14.626 28.218-25.117 28.789z"/></svg>
+            Threadsでシェア
+        </a>
+
+        <!-- はてなブックマーク -->
+        <a class="share-btn share-hatena"
+           id="share-hatena-btn"
+           href="#"
+           target="_blank"
+           rel="noopener noreferrer">
+            <span style="font-weight:bold;font-size:13px;line-height:1">B!</span>
+            はてなブックマーク
+        </a>
+
+    </div>
+</div>
+
+<!-- シェア用JavaScript（copyToClipboardのscriptと同じ場所に追記） -->
+<script>
+    // 現在のページのタイトルとURLでシェアリンクを動的生成
+    (function() {
+        var bookTitle = "{{ results2['Items'][0]['Item']['title'] }}";
+        var pageUrl = window.location.href;
+        var shareText = "「" + bookTitle + "」をBOOK365で検索してみた📚 古本・図書館・オンライン書店をまとめて確認できます #読書";
+
+        document.getElementById('share-x-btn').href =
+            "https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareText) + "&url=" + encodeURIComponent(pageUrl);
+
+        document.getElementById('share-threads-btn').href =
+            "https://www.threads.net/intent/post?text=" + encodeURIComponent(shareText + " " + pageUrl);
+
+        document.getElementById('share-hatena-btn').href =
+            "https://b.hatena.ne.jp/entry/" + encodeURIComponent(pageUrl);
+    })();
+</script>
+
+<!-- ↓styleブロックに追加するCSS -->
+<style>
+.share-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.1s;
+    white-space: nowrap;
+}
+.share-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+.share-btn:active { transform: scale(0.97); }
+.share-x {
+    background: #000;
+    color: #fff;
+}
+.share-threads {
+    background: #000;
+    color: #fff;
+}
+.share-hatena {
+    background: #00a4de;
+    color: #fff;
+}
+</style>
 
 
 
@@ -643,7 +734,10 @@
 
 
 
-            <!-- フッター -->
+
+
+
+            <!-- フッター BK-->
             <div class="footer-contents">
                 <p>他の書店でさがす</p>
                 <button class="bonbon" onclick="copyToClipboard1()">ISBNをコピーする</button>
