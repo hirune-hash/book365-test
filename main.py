@@ -8,19 +8,16 @@ load_dotenv()
 secret_key = os.getenv("SECRET_KEY")
 database_url = os.getenv("DATABASE_URL")
 
+RAKUTEN_APP_ID = os.getenv("RAKUTEN_APP_ID")
+RAKUTEN_AFFILIATE_ID = os.getenv("RAKUTEN_AFFILIATE_ID")
+
 print(f"Secret Key: {secret_key}")
 print(f"Database URL: {database_url}")
 
-
-
-
-
+if not RAKUTEN_APP_ID:
+    print("RAKUTEN_APP_ID が未設定")
 
 from flask import render_template
-
-
-
-
 
 #!/usr/local/bin/python3
 # -*- coding: utf-8 -*-
@@ -31,8 +28,7 @@ from flask import request
 app = Flask(__name__)
 import requests
 import logging
-# from amazon.paapi import AmazonAPI
-# from amazon.paapi import SearchItemsResource
+
 from flask import session
 from flask import make_response
 from logging.handlers import RotatingFileHandler
@@ -45,21 +41,10 @@ from datetime import timedelta
 import json
 from concurrent.futures import ThreadPoolExecutor
 
-# from page98 import app
 
-
-# log_formatter = logging.Formatter('%(asctime)s %(levelname)s [%(threadName)s] %(message)s')
-# handler = RotatingFileHandler('app_error.log', maxBytes=10000, backupCount=1)
-# handler.setLevel(logging.ERROR)
-# handler.setFormatter(log_formatter)
-# app.logger.addHandler(handler)
-
-# @app.route('/')
-# def index():
-#     return render_template('index2.html')
 @app.route('/')
 def index():
-    envtest=os.getenv("SECRET_KEY")
+    envtest=os.getenv("RAKUTEN_APP_ID")
     return render_template(
         'index.html', envtest=envtest
     )
@@ -71,8 +56,8 @@ def search():
     keyword = query
     url = "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404"
     param = {
-        "applicationId" : "1038728018402819690",
-        "affiliateId": "21715c73.23fd5977.21715c74.a6751da5",
+        "applicationId" : RAKUTEN_APP_ID,
+        "affiliateId": RAKUTEN_AFFILIATE_ID,
         "keyword" : keyword,
         "format" : "json",
         "booksGenreId":"001",
@@ -82,6 +67,10 @@ def search():
     result = requests.get(url, param)
     json_result = result.json()     
     return render_template('search.html', results=json_result)
+
+        # "applicationId" : "1038728018402819690",
+        # "affiliateId": "21715c73.23fd5977.21715c74.a6751da5",
+
 
 # @app.route('/search2', methods=['GET'])
 # def search2(): 
@@ -329,10 +318,6 @@ def libget():
     return render_template('save.html',libid =libid)         
 
 
-# @app.route('/prefecture')
-# def prefecture():
-#     return render_template(
-#         'prefecture.html', prefectures=prefectures)
 
 @app.route('/prefecture')
 def prefecture():
