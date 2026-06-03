@@ -10,12 +10,12 @@ database_url = os.getenv("DATABASE_URL")
 
 RAKUTEN_APP_ID = os.getenv("RAKUTEN_APP_ID")
 RAKUTEN_AFFILIATE_ID = os.getenv("RAKUTEN_AFFILIATE_ID")
+CALIL_APPKEY = os.getenv("CALIL_APPKEY")
 
 print(f"Secret Key: {secret_key}")
 print(f"Database URL: {database_url}")
 
-if not RAKUTEN_APP_ID:
-    print("RAKUTEN_APP_ID が未設定")
+
 
 from flask import render_template
 
@@ -123,8 +123,8 @@ def perform_search2(query2):
     # 楽天商品検索API 
     url = "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404"
     param = {
-        "applicationId" : "1038728018402819690",
-        "affiliateId": "21715c73.23fd5977.21715c74.a6751da5",
+        "applicationId" : RAKUTEN_APP_ID,
+        "affiliateId": RAKUTEN_AFFILIATE_ID,
         "keyword" : keyword2 ,
         "format" : "json", 
         "booksGenreId"  : "001",
@@ -218,8 +218,8 @@ def rak_pricelow(query2):
     # URLのパラメータ
     param = {
         # 前手順で取得したアプリIDを設定する
-        "applicationId" : "1038728018402819690",
-        "affiliateId": "21715c73.23fd5977.21715c74.a6751da5",
+        "applicationId" : RAKUTEN_APP_ID,
+        "affiliateId": RAKUTEN_AFFILIATE_ID,
         "genreId" :  "200162",
         "format" : "json",
         "keyword" : keyword,
@@ -251,7 +251,7 @@ def bookstatus(systemid,query2):
         url = "https://api.calil.jp/check"
         
         params = {
-            "appkey": "edf3f46bcd4860e71d352082d98b8aab",
+            "appkey": CALIL_APPKEY,
             "isbn": query2,
             "systemid": systemid,
             "callback": "no"
@@ -278,7 +278,7 @@ def bookstatus(systemid,query2):
                     session = data["data"]["session"]
                     
                     params = {
-                        "appkey": "edf3f46bcd4860e71d352082d98b8aab",
+                        "appkey": CALIL_APPKEY,
                         "session": session,
                     }
                     # APIを実行して結果を取得する
@@ -342,7 +342,7 @@ def lib_search(key1,key2):
     city = key2  
     endpoint = "https://api.calil.jp/library"
     params={
-        "appkey":"edf3f46bcd4860e71d352082d98b8aab", 
+        "appkey":CALIL_APPKEY, 
         "pref":pref,
         "city":city,
         "format":"json",
