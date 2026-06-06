@@ -12,8 +12,7 @@ RAKUTEN_APP_ID = os.getenv("RAKUTEN_APP_ID")
 RAKUTEN_AFFILIATE_ID = os.getenv("RAKUTEN_AFFILIATE_ID")
 CALIL_APPKEY = os.getenv("CALIL_APPKEY")
 
-print(f"Secret Key: {secret_key}")
-print(f"Database URL: {database_url}")
+
 
 
 
