@@ -5,7 +5,7 @@ import os
 load_dotenv()
 
 # 環境変数の取得
-secret_key = os.getenv("SECRET_KEY")
+
 database_url = os.getenv("DATABASE_URL")
 
 RAKUTEN_APP_ID = os.getenv("RAKUTEN_APP_ID")
@@ -303,7 +303,6 @@ def bookstatus(systemid,query2):
         return lib_results    
     
 
-app.secret_key = 'my_key'
 app.permanent_session_lifetime = timedelta(days=365)
 @app.route('/libget', methods=['GET', 'POST'])
 def libget():
