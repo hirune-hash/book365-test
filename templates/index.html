@@ -377,7 +377,7 @@
       <div class="search-box">
         <i class="fa-solid fa-magnifying-glass"></i>
         <input type="text" id="search-input" name="query" placeholder="タイトル・著者・ISBN" autocomplete="off" />
-        <button class="search-btn" type="submit">
+        <button class="search-btn" type="submit" onclick="gtag('event','search',{search_term:document.getElementById('search-input').value})"></button>
           <i class="fa-solid fa-arrow-right"></i>
           検索
         </button>
