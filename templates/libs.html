@@ -13,27 +13,20 @@
         <ul>
             {% for data in libs["data"] %}
                 <li>
-                    
                     <p>{{ data.formal }}<br>
-                    システムID: <span id="systemid">{{ data.systemid }}</span></p>
-                    <button class="idcopy" onclick="copyToClipboard1()">システムIDをコピー</button>
+                    システムID: {{ data.systemid }}</p>
+                    <button class="idcopy" onclick="copyToClipboard('{{ data.systemid }}')">システムIDをコピー</button>
                 </li>
             {% endfor %}
         </ul>
-        
+
         <script>
-            function copyToClipboard1() {
-                // テキストを取得
-                var systemid = document.getElementById("systemid");   
-                // テキストを選択してコピー
-                var range = document.createRange();
-                range.selectNode(systemid);
-                window.getSelection().removeAllRanges();
-                window.getSelection().addRange(range);
-                document.execCommand("copy");
-                window.getSelection().removeAllRanges();
+            function copyToClipboard(text) {
+                navigator.clipboard.writeText(text).then(function() {
+                    alert("コピーしました: " + text);
+                });
             }
-            </script>
+        </script>
     </body>
    
         
