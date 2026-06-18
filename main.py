@@ -301,6 +301,7 @@ def bookstatus(systemid,query2):
         lib_results="エラー"
         return lib_results    
     
+pythonapp.secret_key = os.getenv("SECRET_KEY", "honsaga_dev_key")
 
 app.permanent_session_lifetime = timedelta(days=365)
 @app.route('/libget', methods=['GET', 'POST'])
