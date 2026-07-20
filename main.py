@@ -53,7 +53,7 @@ def index():
 def search():
     query = request.args.get('query', '')
     keyword = query
-    url = "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404"
+    url = "https:// openapi.rakuten.co.jp/services/api/BooksTotal/Search/20170404"
     param = {
         "applicationId" : RAKUTEN_APP_ID,
         "affiliateId": RAKUTEN_AFFILIATE_ID,
@@ -120,7 +120,7 @@ def search2():
 def perform_search2(query2):
     keyword2 = query2
     # 楽天商品検索API 
-    url = "https://app.rakuten.co.jp/services/api/BooksTotal/Search/20170404"
+    url = "https:// openapi.rakuten.co.jp/services/api/BooksTotal/Search/20170404"
     param = {
         "applicationId" : RAKUTEN_APP_ID,
         "affiliateId": RAKUTEN_AFFILIATE_ID,
@@ -208,7 +208,7 @@ def netoff_search(query2):
 def rak_pricelow(query2):
     
     # 楽天商品検索API (BooksGenre/Search/)のURL
-    url = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20220601"
+    url = "https:// openapi.rakuten.co.jp/services/api/IchibaItem/Search/20220601"
 
     keyword = query2
     # 9784815624255
