@@ -67,7 +67,12 @@ def search():
 
     }
     result = requests.get(url, param)
-    json_result = result.json()     
+    json_result = result.json() 
+
+    print("API STATUS:", result.status_code)
+    print("API RESULT:", json_result)
+
+
     return render_template('search.html', results=json_result)
 
         # "applicationId" : "1038728018402819690",
