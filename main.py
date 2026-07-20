@@ -68,9 +68,9 @@ def search():
 
     }
     headers = {
-        "Referer": "https://book365.onrender.com"
+    "Referer": "https://book365.onrender.com/",
+    "Origin": "https://book365.onrender.com"
     }
-
 
 
 
