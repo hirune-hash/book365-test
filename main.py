@@ -55,6 +55,7 @@ def index():
 def search():
     query = request.args.get('query', '')
     keyword = query
+    
     url = "https://openapi.rakuten.co.jp/services/api/BooksTotal/Search/20170404"
     param = {
         "applicationId" : RAKUTEN_APP_ID,
@@ -67,7 +68,7 @@ def search():
 
     }
     headers = {
-        "Referer": "https://honsaga.onrender.com"
+        "Referer": "https://book365.onrender.com"
     }
 
 
