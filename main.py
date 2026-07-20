@@ -10,7 +10,9 @@ database_url = os.getenv("DATABASE_URL")
 
 RAKUTEN_APP_ID = os.getenv("RAKUTEN_APP_ID")
 RAKUTEN_AFFILIATE_ID = os.getenv("RAKUTEN_AFFILIATE_ID")
+RAKUTEN_ACCESS_KEY = os.getenv("RAKUTEN_ACCESS_KEY")
 CALIL_APPKEY = os.getenv("CALIL_APPKEY")
+
 
 
 
@@ -56,6 +58,7 @@ def search():
     url = "https://openapi.rakuten.co.jp/services/api/BooksTotal/Search/20170404"
     param = {
         "applicationId" : RAKUTEN_APP_ID,
+        "accessKey": RAKUTEN_ACCESS_KEY,
         "affiliateId": RAKUTEN_AFFILIATE_ID,
         "keyword" : keyword,
         "format" : "json",
