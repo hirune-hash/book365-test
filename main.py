@@ -66,11 +66,20 @@ def search():
         "hits" : "10",
 
     }
-    result = requests.get(url, param)
-    json_result = result.json() 
+    headers = {
+        "Referer": "https://honsaga.onrender.com"
+    }
 
+
+
+
+    # result = requests.get(url, param)
+    result = requests.get(url, params=param, headers=headers)
+    json_result = result.json() 
     print("API STATUS:", result.status_code)
     print("API RESULT:", json_result)
+
+    
 
 
     return render_template('search.html', results=json_result)
