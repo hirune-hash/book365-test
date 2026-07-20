@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name=”description” content=”ほんさがは、古本・図書館・オンライン書店をまとめて検索できる書籍検索サービスです。BookOff・NetOff・メルカリ・Amazon・楽天ブックス・全国の図書館に対応。タイトル・著者名・ISBNで検索できます。”>
+  <meta name="description" content="ほんさがは、古本・図書館・オンライン書店をまとめて検索できる書籍検索サービスです。BookOff・NetOff・メルカリ・Amazon・楽天ブックス・全国の図書館に対応。タイトル・著者名・ISBNで検索できます。">
   <meta name="google-site-verification" content="JQ4NELQCkHOQ1zvSapecefk9B0nVkyk5riGCcqUsY1k" />
   <title>ほんさが | 本を探すサイト</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Kaisei+Opti:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-  
 </head>
 
 <!-- Google tag (gtag.js) -->
@@ -48,7 +47,6 @@
     min-height: 100vh;
   }
 
-  /* ヘッダー */
   .header {
     background: var(--white);
     border-bottom: 1px solid var(--border);
@@ -60,292 +58,192 @@
     top: 0;
     z-index: 100;
   }
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+  .logo { display: flex; align-items: center; gap: 10px; }
   .logo-icon {
-    width: 34px;
-    height: 34px;
+    width: 34px; height: 34px;
     background: var(--green-mid);
     border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 16px;
   }
   .logo-name {
     font-family: "Kaisei Opti", serif;
-    font-weight: 700;
-    font-size: 20px;
-    letter-spacing: 0.04em;
-    color: var(--text-primary);
+    font-weight: 700; font-size: 20px;
+    letter-spacing: 0.04em; color: var(--text-primary);
   }
-  .header-links {
-    display: flex;
-    gap: 16px;
-  }
-  .header-links a {
-    font-size: 12px;
-    color: var(--text-muted);
-    text-decoration: none;
-  }
+  .header-links { display: flex; gap: 16px; }
+  .header-links a { font-size: 12px; color: var(--text-muted); text-decoration: none; }
 
-  /* ヒーロー */
   .hero {
     background: var(--white);
     padding: 48px 20px 40px;
     text-align: center;
     border-bottom: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
   }
   .hero::before {
     content: '';
-    position: absolute;
-    top: -60px; left: 50%;
+    position: absolute; top: -60px; left: 50%;
     transform: translateX(-50%);
     width: 400px; height: 400px;
     background: radial-gradient(circle, #d4f5e8 0%, transparent 70%);
     pointer-events: none;
   }
   .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--green-pale);
-    border: 1px solid var(--green-light);
-    border-radius: 99px;
-    padding: 4px 12px;
-    font-size: 12px;
-    color: var(--green-dark);
-    margin-bottom: 20px;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--green-pale); border: 1px solid var(--green-light);
+    border-radius: 99px; padding: 4px 12px;
+    font-size: 12px; color: var(--green-dark); margin-bottom: 20px;
   }
   .hero-eyebrow i { font-size: 11px; }
   .hero h1 {
-    font-family: 'Syne', sans-serif;
-    font-size: 26px;
-    line-height: 1.3;
-    color: var(--text-primary);
-    margin-bottom: 10px;
-    position: relative;
+    font-family: 'Syne', sans-serif; font-size: 26px; line-height: 1.3;
+    color: var(--text-primary); margin-bottom: 10px; position: relative;
   }
   .hero-sub {
-    font-size: 14px;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: 28px;
-    position: relative;
+    font-size: 14px; color: var(--text-secondary); line-height: 1.7;
+    margin-bottom: 28px; position: relative;
   }
 
-  /* 検索ボックス */
   .search-box {
-    max-width: 420px;
-    margin: 0 auto;
-    background: var(--bg);
-    border: 1.5px solid var(--border);
+    max-width: 420px; margin: 0 auto;
+    background: var(--bg); border: 1.5px solid var(--border);
     border-radius: var(--radius-lg);
     padding: 6px 6px 6px 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: border-color 0.2s;
-    position: relative;
+    display: flex; align-items: center; gap: 8px;
+    transition: border-color 0.2s; position: relative;
   }
-  .search-box:focus-within {
-    border-color: var(--green-mid);
-    background: var(--white);
-  }
-  .search-box i {
-    color: var(--text-muted);
-    font-size: 15px;
-    flex-shrink: 0;
-  }
+  .search-box:focus-within { border-color: var(--green-mid); background: var(--white); }
+  .search-box > i { color: var(--text-muted); font-size: 15px; flex-shrink: 0; }
   .search-box input {
-    flex: 1;
-    border: none;
-    background: transparent;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    color: var(--text-primary);
-    outline: none;
+    flex: 1; border: none; background: transparent;
+    font-family: 'DM Sans', sans-serif; font-size: 15px;
+    color: var(--text-primary); outline: none;
   }
   .search-box input::placeholder { color: var(--text-muted); }
+  .scan-btn {
+    background: var(--green-pale);
+    border: 1px solid var(--green-light);
+    border-radius: var(--radius-sm);
+    width: 38px; height: 38px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--green-dark); font-size: 16px;
+    cursor: pointer; flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .scan-btn:hover { background: var(--green-light); }
   .search-btn {
-    background: var(--green-mid);
-    color: white;
-    border: none;
-    border-radius: var(--radius-md);
-    padding: 10px 20px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: background 0.2s, transform 0.1s;
-    flex-shrink: 0;
+    background: var(--green-mid); color: white; border: none;
+    border-radius: var(--radius-md); padding: 10px 20px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+    cursor: pointer; display: flex; align-items: center; gap: 6px;
+    transition: background 0.2s, transform 0.1s; flex-shrink: 0;
   }
   .search-btn:hover { background: var(--green-dark); }
   .search-btn:active { transform: scale(0.97); }
-  .search-hint {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 10px;
-    position: relative;
+  .search-hint { font-size: 11px; color: var(--text-muted); margin-top: 10px; position: relative; }
+
+  /* カメラモーダル */
+  .scan-modal {
+    display: none;
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.85);
+    flex-direction: column; align-items: center; justify-content: center;
+  }
+  .scan-modal.active { display: flex; }
+  .scan-modal-inner {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    width: 90%; max-width: 360px;
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+  }
+  .scan-modal-title { font-size: 15px; font-weight: 500; }
+  .scan-modal-sub { font-size: 12px; color: var(--text-muted); text-align: center; }
+  #scanner-container {
+    width: 100%; aspect-ratio: 1;
+    background: #000; border-radius: var(--radius-md);
+    overflow: hidden; position: relative;
+  }
+  #scanner-container video { width: 100%; height: 100%; object-fit: cover; }
+  #scanner-container canvas { display: none; }
+  .scan-close-btn {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: var(--radius-md); padding: 10px 24px;
+    font-size: 14px; cursor: pointer; width: 100%;
+  }
+  .scan-status {
+    font-size: 13px; color: var(--green-dark);
+    min-height: 20px; text-align: center;
   }
 
-
-  /* サービスチップ */
   .services-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    padding: 24px 16px 0;
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 8px; padding: 24px 16px 0;
   }
   .service-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 99px;
-    padding: 6px 12px;
-    font-size: 12px;
-    color: var(--text-secondary);
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 99px; padding: 6px 12px;
+    font-size: 12px; color: var(--text-secondary);
   }
   .service-chip i { color: var(--green-mid); font-size: 12px; }
 
-  /* フィーチャーカード */
   .section { padding: 32px 16px 0; }
   .section-title {
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 14px;
+    font-size: 11px; font-weight: 500; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px;
   }
-  .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
+  .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .feat-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-md); padding: 16px;
+    display: flex; flex-direction: column; gap: 8px;
     transition: border-color 0.2s, transform 0.2s;
   }
-  .feat-card:hover {
-    border-color: var(--green-mid);
-    transform: translateY(-2px);
-  }
+  .feat-card:hover { border-color: var(--green-mid); transform: translateY(-2px); }
   .feat-icon-wrap {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
+    width: 36px; height: 36px; border-radius: 10px;
     background: var(--green-pale);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--green-mid);
-    font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--green-mid); font-size: 16px;
   }
-  .feat-title {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-primary);
-  }
-  .feat-desc {
-    font-size: 12px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-  }
+  .feat-title { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+  .feat-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
 
-  /* 使い方 */
   .steps { display: flex; flex-direction: column; gap: 0; }
   .step-row {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    padding: 14px 0;
-    border-bottom: 1px solid var(--border);
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 14px 0; border-bottom: 1px solid var(--border);
   }
   .step-row:last-child { border-bottom: none; }
   .step-num {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: var(--green-mid);
-    color: white;
-    font-size: 12px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    margin-top: 1px;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--green-mid); color: white;
+    font-size: 12px; font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
   }
-  .step-body {}
   .step-title { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
   .step-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.5; }
 
-  /* フッター */
-  .footer {
-    padding: 32px 16px 40px;
-    text-align: center;
-  }
+  .footer { padding: 32px 16px 40px; text-align: center; }
   .add-home-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-md);
-    padding: 18px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 24px;
-    text-align: left;
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: var(--radius-md); padding: 18px;
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 24px; text-align: left;
   }
   .add-home-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
+    width: 40px; height: 40px; border-radius: 12px;
     background: var(--green-pale);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--green-mid);
-    font-size: 18px;
-    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--green-mid); font-size: 18px; flex-shrink: 0;
   }
-  .add-home-text p:first-child {
-    font-size: 13px;
-    font-weight: 500;
-    margin-bottom: 2px;
-  }
-  .add-home-text p:last-child {
-    font-size: 12px;
-    color: var(--text-muted);
-  }
-  .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-  }
-  .footer-links a {
-    font-size: 12px;
-    color: var(--text-muted);
-    text-decoration: none;
-  }
+  .add-home-text p:first-child { font-size: 13px; font-weight: 500; margin-bottom: 2px; }
+  .add-home-text p:last-child { font-size: 12px; color: var(--text-muted); }
+  .footer-links { display: flex; justify-content: center; gap: 16px; }
+  .footer-links a { font-size: 12px; color: var(--text-muted); text-decoration: none; }
 </style>
 
 <body>
@@ -362,8 +260,6 @@
     </div>
   </header>
 
-
-
   <!-- ヒーロー -->
   <section class="hero">
     <div class="hero-eyebrow">
@@ -377,6 +273,9 @@
       <div class="search-box">
         <i class="fa-solid fa-magnifying-glass"></i>
         <input type="text" id="search-input" name="query" placeholder="タイトル・著者・ISBN" autocomplete="off" />
+        <button type="button" class="scan-btn" id="scan-btn" title="バーコードで検索">
+          <i class="fa-solid fa-camera"></i>
+        </button>
         <button class="search-btn" type="submit" onclick="gtag('event','search',{search_term:document.getElementById('search-input').value})">
           <i class="fa-solid fa-arrow-right"></i>
           検索
@@ -385,6 +284,17 @@
     </form>
     <p class="search-hint">例：「坊っちゃん」「夏目漱石」「9784003100516」</p>
   </section>
+
+  <!-- カメラモーダル -->
+  <div class="scan-modal" id="scan-modal">
+    <div class="scan-modal-inner">
+      <p class="scan-modal-title"><i class="fa-solid fa-camera"></i> バーコードをスキャン</p>
+      <p class="scan-modal-sub">本の裏のバーコードをカメラに向けてください</p>
+      <div id="scanner-container"></div>
+      <p class="scan-status" id="scan-status">読み取り中...</p>
+      <button class="scan-close-btn" id="scan-close-btn">キャンセル</button>
+    </div>
+  </div>
 
   <!-- 対応サービス -->
   <div class="services-row">
@@ -465,6 +375,59 @@
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSc_tAL3W7X5nAu78rmp4b0yKef6ipG6o62n01-gJ9IUJ6I9GQ/viewform?usp=sf_link" target="_blank">お問い合わせ</a>
     </div>
   </div>
+
+  <!-- QuaggaJS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+  <script>
+    const scanBtn = document.getElementById('scan-btn');
+    const scanModal = document.getElementById('scan-modal');
+    const scanCloseBtn = document.getElementById('scan-close-btn');
+    const scanStatus = document.getElementById('scan-status');
+    const searchInput = document.getElementById('search-input');
+
+    function startScanner() {
+      scanModal.classList.add('active');
+      scanStatus.textContent = '読み取り中...';
+
+      Quagga.init({
+        inputStream: {
+          type: 'LiveStream',
+          target: document.getElementById('scanner-container'),
+          constraints: {
+            facingMode: 'environment'  // 背面カメラ
+          }
+        },
+        decoder: {
+          readers: ['ean_reader']  // ISBNはEAN-13
+        }
+      }, function(err) {
+        if (err) {
+          scanStatus.textContent = 'カメラを起動できませんでした';
+          return;
+        }
+        Quagga.start();
+      });
+
+      Quagga.onDetected(function(result) {
+        const isbn = result.codeResult.code;
+        searchInput.value = isbn;
+        scanStatus.textContent = '読み取り完了：' + isbn;
+        stopScanner();
+        // 少し待ってから検索実行
+        setTimeout(function() {
+          document.querySelector('form').submit();
+        }, 500);
+      });
+    }
+
+    function stopScanner() {
+      Quagga.stop();
+      scanModal.classList.remove('active');
+    }
+
+    scanBtn.addEventListener('click', startScanner);
+    scanCloseBtn.addEventListener('click', stopScanner);
+  </script>
 
 </body>
 </html>
