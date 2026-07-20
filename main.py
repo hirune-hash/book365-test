@@ -141,15 +141,20 @@ def perform_search2(query2):
     # 楽天商品検索API 
     url = "https://openapi.rakuten.co.jp/services/api/BooksTotal/Search/20170404"
     param = {
-        "applicationId" : RAKUTEN_APP_ID,
+        "applicationId": RAKUTEN_APP_ID,
+        "accessKey": RAKUTEN_ACCESS_KEY,
         "affiliateId": RAKUTEN_AFFILIATE_ID,
-        "keyword" : keyword2 ,
-        "format" : "json", 
-        "booksGenreId"  : "001",
-        "hits" : "10",
+        "keyword": keyword2,
+        "format": "json",
+        "booksGenreId": "001",
+        "hits": "10",
+    }
+    headers = {
+        "Referer": "https://book365.onrender.com/",
+        "Origin": "https://book365.onrender.com"
     }
     # APIを実行して結果を取得する
-    result = requests.get(url, param)
+    result = requests.get(url, params=param, headers=headers)
     # jsonにデコードして出力する
     json_result = result.json()
     return json_result
