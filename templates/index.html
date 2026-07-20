@@ -410,6 +410,8 @@
 
       Quagga.onDetected(function(result) {
         const isbn = result.codeResult.code;
+        // 978・979で始まらないコードは無視
+        if (!isbn.startsWith('978') && !isbn.startsWith('979')) return;
         searchInput.value = isbn;
         scanStatus.textContent = '読み取り完了：' + isbn;
         stopScanner();
