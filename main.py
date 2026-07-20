@@ -77,6 +77,7 @@ def search():
     # result = requests.get(url, param)
     result = requests.get(url, params=param, headers=headers)
     json_result = result.json() 
+    print("SENT HEADERS:", result.request.headers)
     print("API STATUS:", result.status_code)
     print("API RESULT:", json_result)
 
